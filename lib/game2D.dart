@@ -14,6 +14,7 @@ class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks 
   late final CameraComponent cam;
   late JoystickComponent joyStick;
   late Player player;
+  final jumpButton = JumpButton();
   // Khai báo parallaxBackground component
   late ParallaxComponent parallaxBackground;
 
@@ -21,27 +22,27 @@ class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks 
   FutureOr<void> onLoad() async {
     await images.loadAllImages();
 
-    // Load the world first
     final world = Level(levelName: 'level_01', collisionBlocks: []);
-    await add(world); // Add world to the game
+    await add(world);
 
     player = world.player!;
     player.collisionBlocks = world.collisionBlocks;
 
-    // Create camera and set its world to the Level instance
-    cam = CameraComponent.withFixedResolution(world: world, width: 480, height: 270); // Sử dụng instance 'world'
-    cam.follow(player); // Theo dõi player
-    add(cam); // Thêm camera vào game
-      parallaxBackground = await loadParallaxComponent([
-        ParallaxImageData('BG1.png'), // Lớp gần nhất
-        ParallaxImageData('BG2.png'), // Lớp giữa
-        ParallaxImageData('BG3.png'), // Lớp xa nhất
-      ], baseVelocity: Vector2.zero(), // Bắt đầu với vận tốc bằng 0
-          velocityMultiplierDelta: Vector2(1.8, 1.0)); // Điều chỉnh hệ số nhân vận tốc
+    cam = CameraComponent(world: world);
+    cam.follow(player);
+    add(cam);
+    cam.viewfinder.zoom = 2.0;
 
-      add(parallaxBackground); // Thêm parallax vào viewport
+    parallaxBackground = await loadParallaxComponent([
+        ParallaxImageData('BG1.png'),
+        ParallaxImageData('BG2.png'),
+        ParallaxImageData('BG3.png'),
+      ], baseVelocity: Vector2.zero(),
+          velocityMultiplierDelta: Vector2(1.8, 1.0));
+
+      add(parallaxBackground);
     addJoyStick();
-    add(JumpButton());
+    cam.viewport.add(jumpButton);
     return super.onLoad();
   }
 
@@ -56,13 +57,13 @@ class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks 
     joyStick = JoystickComponent(
       knob: SpriteComponent(
         sprite: Sprite(images.fromCache('UI/Knob.png')),
-        size: Vector2(32, 32),
+        size: Vector2(64, 64),
       ),
       background: SpriteComponent(
         sprite: Sprite(images.fromCache('UI/Joystick.png')),
-        size: Vector2(64, 64),
+        size: Vector2(128, 128),
       ),
-      margin: const EdgeInsets.only(left: 32, bottom: 16),
+      margin: const EdgeInsets.only(left: 64, bottom: 32),
     );
     cam.viewport.add(joyStick);
   }

@@ -31,7 +31,7 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
 
   Vector2 velocity = Vector2.zero();
   List<CollisionBlock> collisionBlocks = [];
-  PlayerHitbox hitbox = PlayerHitbox(offsetX: 20, offsetY: 8, width: 28, height: 56);
+  PlayerHitbox hitbox = PlayerHitbox(offsetX: 15, offsetY: 6, width: 18, height: 42);
 
   double fixedDeltaTime = 1 / 60;
   double accumulatedTime = 0;
@@ -41,11 +41,12 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
   @override
   Future<void> onLoad() async {
     LoadAllAnimation();
+
     add(RectangleHitbox(
       position: Vector2(hitbox.offsetX, hitbox.offsetY),
       size: Vector2(hitbox.width, hitbox.height),
     ));
-    scale = Vector2.all(2);
+    scale = Vector2.all(1.5);
     return super.onLoad();
   }
 

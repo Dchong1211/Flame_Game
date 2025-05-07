@@ -4,6 +4,7 @@
         "width": 2
     },
     "activeFile": "level_01.tmx",
+    "automapping.whileDrawing": false,
     "expandedProjectPaths": [
         "."
     ],
@@ -71,6 +72,7 @@
         "level_01.tmx",
         "Level-02.tmx"
     ],
+    "resizeMap.removeObjects": false,
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
