@@ -38,7 +38,7 @@ class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks 
         ParallaxImageData('BG2.png'),
         ParallaxImageData('BG3.png'),
       ], baseVelocity: Vector2.zero(),
-          velocityMultiplierDelta: Vector2(1.8, 1.0));
+          velocityMultiplierDelta: Vector2(1.5, 0));
 
       add(parallaxBackground);
     addJoyStick();
@@ -49,7 +49,9 @@ class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks 
   @override
   void update(double dt) {
     updateJoystick();
-    
+    if (parallaxBackground.parallax != null) {
+      parallaxBackground.parallax!.baseVelocity = Vector2(player.velocity.x * 0.3, 0);
+    }
     super.update(dt);
   }
 
