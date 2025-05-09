@@ -1,4 +1,4 @@
-import 'package:final_project/game2D.dart';
+import 'package:final_project/game2d.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/cupertino.dart';

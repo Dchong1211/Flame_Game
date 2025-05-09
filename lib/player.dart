@@ -1,11 +1,10 @@
 import 'dart:async';
-import 'package:final_project/game2D.dart';
+import 'package:final_project/game2d.dart';
 import 'package:final_project/levels/check_collisions.dart';
 import 'package:final_project/levels/collisions.dart';
 import 'package:final_project/levels/hitbox.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:flutter/services.dart';
 
 enum PlayerState{idle, run, jump, fall}
 
@@ -40,7 +39,7 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
 
   @override
   Future<void> onLoad() async {
-    LoadAllAnimation();
+    loadAllAnimation();
 
     add(RectangleHitbox(
       position: Vector2(hitbox.offsetX, hitbox.offsetY),
@@ -56,11 +55,11 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
 
     while (accumulatedTime >= fixedDeltaTime) {
       if (!gotHit && !reachedCheckpoint) {
-        UpdatePlayerState();
-        UpdatePlayerMovement(fixedDeltaTime);
-        CheckHorizontalCollisions();
+        updatePlayerState();
+        updatePlayerMovement(fixedDeltaTime);
+        checkHorizontalCollisions();
         applyGravity(fixedDeltaTime);
-        CheckVerticalCollisions();
+        checkVerticalCollisions();
       }
 
       accumulatedTime -= fixedDeltaTime;
@@ -69,9 +68,9 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
     super.update(dt);
   }
 
-  SpriteAnimation Animation(String path, int frame){
+  SpriteAnimation loadAnimation(String path, int frame){
     return SpriteAnimation.fromFrameData(
-      game.images.fromCache('$path'),
+      game.images.fromCache(path),
       SpriteAnimationData.sequenced(
         amount: frame,
         stepTime: stepTime,
@@ -80,11 +79,11 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
     );
   }
 
-  void LoadAllAnimation() {
-    idle = Animation('Character/_Idle.png', 10);
-    run = Animation('Character/_Run.png', 10);
-    jumpAnimation = Animation('Character/_Jump.png', 3);
-    fallAnimation = Animation('Character/_Fall.png', 3);
+  void loadAllAnimation() {
+    idle = loadAnimation('Character/_Idle.png', 10);
+    run = loadAnimation('Character/_Run.png', 10);
+    jumpAnimation = loadAnimation('Character/_Jump.png', 3);
+    fallAnimation = loadAnimation('Character/_Fall.png', 3);
 
     animations = {
       PlayerState.idle: idle,
@@ -95,12 +94,12 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
     current = PlayerState.idle;
   }
 
-  void UpdatePlayerMovement(double dt) {
+  void updatePlayerMovement(double dt) {
     velocity.x = horizontal * speed;
     position.x += velocity.x * dt;
   }
 
-  void UpdatePlayerState() {
+  void updatePlayerState() {
     PlayerState playerState = PlayerState.idle;
 
     if(velocity.x < 0 && scale.x > 0){
@@ -123,10 +122,10 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
     current = playerState;
   }
 
-  void CheckHorizontalCollisions() {
+  void checkHorizontalCollisions() {
     for (final block in collisionBlocks) {
       if (!block.isPlatform) {
-        if (CheckCollision(this, block)) {
+        if (checkCollision(this, block)) {
           if (velocity.x > 0) {
             velocity.x = 0;
             position.x = block.x - hitbox.offsetX - hitbox.width;
@@ -147,10 +146,10 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
     position.y += velocity.y * dt;
   }
 
-  void CheckVerticalCollisions() {
+  void checkVerticalCollisions() {
     for (final block in collisionBlocks) {
       if (block.isPlatform) {
-        if (CheckCollision(this, block)) {
+        if (checkCollision(this, block)) {
           if (velocity.y > 0) {
             velocity.y = 0;
             position.y = block.y - hitbox.height - hitbox.offsetY;
@@ -160,7 +159,7 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
           }
         }
       } else {
-        if (CheckCollision(this, block)) {
+        if (checkCollision(this, block)) {
           if (velocity.y > 0) {
             velocity.y = 0;
             position.y = block.y - hitbox.height - hitbox.offsetY;

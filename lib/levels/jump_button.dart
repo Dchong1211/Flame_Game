@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:final_project/game2D.dart';
+import 'package:final_project/game2d.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 

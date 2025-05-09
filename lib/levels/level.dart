@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:final_project/levels/collisions.dart';
 import 'package:final_project/player.dart';
-import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 
@@ -18,7 +17,7 @@ class Level extends World {
 
     final spawnPointsLayer = level.tileMap.getLayer<ObjectGroup>('SpawnPoints');
     if(spawnPointsLayer != null){
-      for (final spawnPoint in spawnPointsLayer!.objects) {
+      for (final spawnPoint in spawnPointsLayer.objects) {
         switch (spawnPoint.class_) {
           case 'Player':
             player = Player(position: Vector2(spawnPoint.x, spawnPoint.y));

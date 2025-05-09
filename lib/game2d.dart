@@ -1,9 +1,7 @@
 import 'dart:async';
-
 import 'package:final_project/levels/jump_button.dart';
 import 'package:final_project/levels/level.dart'; // Import lớp Level
 import 'package:final_project/player.dart';
-import 'package:flame/camera.dart';
 import 'package:flame/components.dart'; // Chứa ParallaxComponent và ParallaxImageData
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
