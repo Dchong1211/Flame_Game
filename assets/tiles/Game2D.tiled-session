@@ -26,7 +26,7 @@
         },
         "Game2D.tsx": {
             "dynamicWrapping": false,
-            "scaleInDock": 1,
+            "scaleInDock": 2,
             "scaleInEditor": 5.5
         },
         "Level-02.tmx": {
@@ -49,7 +49,7 @@
             "selectedLayer": 3,
             "viewCenter": {
                 "x": 683.3333333333333,
-                "y": 183.33333333333331
+                "y": 183.33333333333326
             }
         }
     },
