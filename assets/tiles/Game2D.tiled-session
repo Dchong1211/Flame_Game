@@ -14,11 +14,11 @@
             "expandedObjectLayers": [
                 3
             ],
-            "scale": 1.4249999999999998,
+            "scale": 1.42,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 319.64912280701753,
-                "y": 184.2105263157895
+                "x": 319.3661971830986,
+                "y": 184.1549295774648
             }
         },
         "F:/Downloads/pixel_adventure-master/pixel_adventure-master/assets/tiles/Pixel Adventure.tsx": {
@@ -40,36 +40,40 @@
         "Pixel Adventure.tsx": {
             "scaleInDock": 1
         },
+        "Tileset.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 5.5
+        },
         "level_01.tmx": {
             "expandedObjectLayers": [
                 5,
                 4
             ],
-            "scale": 0.75,
-            "selectedLayer": 3,
+            "scale": 1,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 683.3333333333333,
-                "y": 183.33333333333326
+                "x": 697.5,
+                "y": 253.5
             }
         }
     },
     "last.externalTilesetPath": "C:/Android/AndroidStudioProjects/Final_Project/assets/tiles",
-    "last.imagePath": "C:/Android/AndroidStudioProjects/Final_Project/assets/images",
+    "last.imagePath": "C:/Android/AndroidStudioProjects/Final_Project/assets/images/Tiles_images",
     "map.height": 23,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
     "map.width": 80,
     "openFiles": [
-        "Game2D.tsx",
         "level_01.tmx",
-        "F:/Downloads/pixel_adventure-master/pixel_adventure-master/assets/tiles/Level-01.tmx"
+        "Game2D.tsx"
     ],
     "project": "Game2D.tiled-project",
     "recentFiles": [
         "Game2D.tsx",
-        "F:/Downloads/pixel_adventure-master/pixel_adventure-master/assets/tiles/Level-01.tmx",
         "level_01.tmx",
+        "Tileset.tsx",
+        "F:/Downloads/pixel_adventure-master/pixel_adventure-master/assets/tiles/Level-01.tmx",
         "Level-02.tmx"
     ],
     "resizeMap.removeObjects": false,

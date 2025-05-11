@@ -32,9 +32,9 @@ class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks 
     cam.viewfinder.zoom = 2.0;
 
     parallaxBackground = await loadParallaxComponent([
-        ParallaxImageData('BG1.png'),
-        ParallaxImageData('BG2.png'),
-        ParallaxImageData('BG3.png'),
+        ParallaxImageData('Backgrounds/BG1.png'),
+        ParallaxImageData('Backgrounds/BG2.png'),
+        ParallaxImageData('Backgrounds/BG3.png'),
       ], baseVelocity: Vector2.zero(),
           velocityMultiplierDelta: Vector2(1.5, 0));
 
@@ -69,20 +69,22 @@ class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks 
   }
 
   void updateJoystick() {
-    switch (joyStick.direction) {
-      case JoystickDirection.left:
-      case JoystickDirection.upLeft:
-      case JoystickDirection.downLeft:
-        player.horizontal = -1;
-        break;
-      case JoystickDirection.right:
-      case JoystickDirection.upRight:
-      case JoystickDirection.downRight:
-        player.horizontal = 1;
-        break;
-      default:
-        player.horizontal = 0;
-        break;
+    if (joyStick.direction != JoystickDirection.idle) {
+      switch (joyStick.direction) {
+        case JoystickDirection.left:
+        case JoystickDirection.upLeft:
+        case JoystickDirection.downLeft:
+          player.horizontal = -1;
+          break;
+        case JoystickDirection.right:
+        case JoystickDirection.upRight:
+        case JoystickDirection.downRight:
+          player.horizontal = 1;
+          break;
+        default:
+          break;
+      }
+    } else {
     }
   }
 }

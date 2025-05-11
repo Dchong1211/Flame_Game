@@ -5,11 +5,12 @@ import 'package:final_project/levels/collisions.dart';
 import 'package:final_project/levels/hitbox.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flutter/services.dart';
 
 enum PlayerState{idle, run, jump, fall}
 
 
-class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>{
+class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>, KeyboardHandler {
   Player({required Vector2 position}) : super(position: position);
   late final SpriteAnimation idle;
   late final SpriteAnimation run;
@@ -24,6 +25,7 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
   final double jumpForce = 260;
   final double terminalVelocity = 300;
   bool isOnGround = false;
+  bool hasJumped = false;
 
   int jumpCount = 0;
   final int maxJumps = 2;
@@ -49,6 +51,24 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
     return super.onLoad();
   }
 
+  //cho Thời, Hùng test game bằng máy ảo
+  @override
+  bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+    if (keysPressed.contains(LogicalKeyboardKey.keyA)) {
+      horizontal = -1;
+    }
+    if (keysPressed.contains(LogicalKeyboardKey.keyD)) {
+      horizontal = 1;
+    }
+    if (keysPressed.contains(LogicalKeyboardKey.space)) {
+      if (event is KeyDownEvent && event.logicalKey == LogicalKeyboardKey.space) {
+        jump();
+      }
+    }
+
+
+    return super.onKeyEvent(event, keysPressed); // Quan trọng: Gọi super
+  }
   @override
   void update(double dt) {
     accumulatedTime += dt;
@@ -183,4 +203,5 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
       jumpCount++;
     }
   }
+
 }
