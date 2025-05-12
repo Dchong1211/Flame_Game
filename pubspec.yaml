@@ -69,6 +69,7 @@ flutter:
       - assets/images/Tiles_images/Tileset.png
       - assets/images/Character/
       - assets/images/Backgrounds/
+      - assets/images/Backgrounds/Level_1/
       - assets/tiles/Game2D.tsx
       - assets/tiles/Decors.tsx
 
