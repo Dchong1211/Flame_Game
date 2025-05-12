@@ -7,6 +7,8 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
 
+import 'levels/checkpoint.dart';
+
 enum PlayerState{idle, run, jump, fall}
 
 
@@ -26,7 +28,7 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
   final double terminalVelocity = 300;
   bool isOnGround = false;
   bool hasJumped = false;
-
+  bool reachedCheckpoint = false;
   int jumpCount = 0;
   final int maxJumps = 2;
 
@@ -37,7 +39,6 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
   double fixedDeltaTime = 1 / 60;
   double accumulatedTime = 0;
   bool gotHit = false;
-  bool reachedCheckpoint = false;
 
   @override
   Future<void> onLoad() async {
@@ -104,6 +105,7 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
     run = loadAnimation('Character/_Run.png', 10);
     jumpAnimation = loadAnimation('Character/_Jump.png', 3);
     fallAnimation = loadAnimation('Character/_Fall.png', 3);
+
 
     animations = {
       PlayerState.idle: idle,

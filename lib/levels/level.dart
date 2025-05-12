@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:final_project/levels/checkpoint.dart';
 import 'package:final_project/levels/collisions.dart';
 import 'package:final_project/player.dart';
 import 'package:flame/components.dart';
@@ -22,6 +23,13 @@ class Level extends World {
           case 'Player':
             player = Player(position: Vector2(spawnPoint.x, spawnPoint.y));
             add(player!);
+            break;
+          case 'Checkpoint':
+            final checkpoint = Checkpoint(
+              position: Vector2(spawnPoint.x, spawnPoint.y),
+              size: Vector2(spawnPoint.width, spawnPoint.height),
+            );
+            add(checkpoint);
             break;
           default:
         }
