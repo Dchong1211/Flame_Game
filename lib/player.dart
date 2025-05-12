@@ -31,26 +31,35 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
   bool reachedCheckpoint = false;
   int jumpCount = 0;
   final int maxJumps = 2;
+  int lastDirection = 1;
+
 
   Vector2 velocity = Vector2.zero();
   List<CollisionBlock> collisionBlocks = [];
-  PlayerHitbox hitbox = PlayerHitbox(offsetX: 10, offsetY: 4, width: 14, height: 28);
+  PlayerHitbox hitbox = PlayerHitbox(offsetX: 5, offsetY: 2, width: 0.5, height: 28);
 
   double fixedDeltaTime = 1 / 60;
   double accumulatedTime = 0;
   bool gotHit = false;
 
   @override
+  @override
   Future<void> onLoad() async {
     loadAllAnimation();
     debugMode = true;
+
+    anchor = Anchor.center;
+
     add(RectangleHitbox(
-      position: Vector2(hitbox.offsetX, hitbox.offsetY),
+      position: Vector2(hitbox.offsetX - hitbox.width / 2, hitbox.offsetY - hitbox.height/2),
       size: Vector2(hitbox.width, hitbox.height),
     ));
+
     scale = Vector2.all(1);
+
     return super.onLoad();
   }
+
 
   //cho Thời, Hùng test game bằng máy ảo
   @override
@@ -68,7 +77,7 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
     }
 
 
-    return super.onKeyEvent(event, keysPressed); // Quan trọng: Gọi super
+    return super.onKeyEvent(event, keysPressed);
   }
   @override
   void update(double dt) {
@@ -119,17 +128,24 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
   void updatePlayerMovement(double dt) {
     velocity.x = horizontal * speed;
     position.x += velocity.x * dt;
+
+    // Cập nhật hướng và scale
+    if (horizontal < 0) {
+      if (lastDirection != -1) {
+        scale.x = -1;
+        lastDirection = -1;
+      }
+    } else if (horizontal > 0) {
+      if (lastDirection != 1) {
+        scale.x = 1;
+        lastDirection = 1;
+      }
+    }
   }
+
 
   void updatePlayerState() {
     PlayerState playerState = PlayerState.idle;
-
-    if(velocity.x < 0 && scale.x > 0){
-      flipHorizontallyAroundCenter();
-    }
-    else if(velocity.x > 0 && scale.x < 0){
-      flipHorizontallyAroundCenter();
-    }
 
     if(velocity.y < 0){
       playerState = PlayerState.jump;
@@ -150,7 +166,7 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
         if (checkCollision(this, block)) {
           if (velocity.x > 0) {
             velocity.x = 0;
-            position.x = block.x - hitbox.offsetX - hitbox.width;
+            position.x = block.x - hitbox.offsetX - hitbox.width/2;
             break;
           }
           if (velocity.x < 0) {
@@ -172,26 +188,30 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
     for (final block in collisionBlocks) {
       if (block.isPlatform) {
         if (checkCollision(this, block)) {
-          if (velocity.y > 0) {
+          final playerBottom = position.y + hitbox.height / 2 + hitbox.offsetY;
+          final platformTop = block.y;
+
+          if (velocity.y > 0 && playerBottom <= platformTop + 5) {
             velocity.y = 0;
-            position.y = block.y - hitbox.height - hitbox.offsetY;
+            position.y = platformTop - hitbox.height / 2 - hitbox.offsetY;
             isOnGround = true;
             jumpCount = 0;
             break;
           }
         }
-      } else {
+      }
+      else {
         if (checkCollision(this, block)) {
           if (velocity.y > 0) {
             velocity.y = 0;
-            position.y = block.y - hitbox.height - hitbox.offsetY;
+            position.y = block.y - hitbox.height/2 - hitbox.offsetY;
             isOnGround = true;
             jumpCount = 0;
             break;
           }
           if (velocity.y < 0) {
             velocity.y = 0;
-            position.y = block.y + block.height - hitbox.offsetY;
+            position.y = block.y + block.height - hitbox.offsetY + hitbox.height/2;
           }
         }
       }

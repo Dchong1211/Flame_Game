@@ -173,14 +173,14 @@
         },
         "level_01.tmx": {
             "expandedObjectLayers": [
-                5,
-                4
+                4,
+                5
             ],
-            "scale": 1.5,
-            "selectedLayer": 4,
+            "scale": 2,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 678.6666666666666,
-                "y": 198.33333333333337
+                "x": 249.5,
+                "y": 133.75
             }
         },
         "level_02.tmx": {
