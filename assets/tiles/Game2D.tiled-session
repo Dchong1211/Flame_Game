@@ -1,5 +1,9 @@
 {
-    "activeFile": "Free.tmx",
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "level_01.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -173,10 +177,10 @@
                 4
             ],
             "scale": 1.5,
-            "selectedLayer": 1,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 273.33333333333326,
-                "y": 183.66666666666663
+                "x": 678.6666666666666,
+                "y": 198.33333333333337
             }
         },
         "level_02.tmx": {
@@ -219,30 +223,23 @@
     "last.externalTilesetPath": "C:/Android/AndroidStudioProjects/Final_Project/assets/tiles",
     "last.imagePath": "C:/Android/AndroidStudioProjects/Final_Project/assets/images/Tiles_images",
     "openFiles": [
-        "Game2D.tsx",
-        "level_01.tmx",
-        "level_3.tmx",
-        "F:/Downloads/forest-nature-fantasy-tileset-free/Fantasy Swamp Forest/Free/Free.tmx",
-        "BG_1.tsx",
-        "Sale-board.tsx",
-        "Free.tmx",
-        "Terrain_and_Props.tsx",
-        "BG_3.tsx"
+        "Decors.tsx",
+        "level_01.tmx"
     ],
     "project": "Game2D.tiled-project",
     "property.type": "object",
     "recentFiles": [
+        "Decors.tsx",
+        "level_01.tmx",
         "Game2D.tsx",
         "Free.tmx",
         "F:/Downloads/forest-nature-fantasy-tileset-free/Fantasy Swamp Forest/Free/Free.tmx",
         "Sale-board.tsx",
         "Terrain_and_Props.tsx",
         "Level_02.tmx",
-        "level_01.tmx",
         "level_3.tmx",
         "BG_1.tsx",
         "BG_3.tsx",
-        "Decors.tsx",
         "F:/Documents/Zalo Received Files/Level_02/Level_02.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",

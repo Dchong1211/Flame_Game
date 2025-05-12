@@ -27,9 +27,11 @@ class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks 
     player.collisionBlocks = world.collisionBlocks;
 
     cam = CameraComponent(world: world);
+    cam.viewfinder.anchor = Anchor.center;
     cam.follow(player);
+
     add(cam);
-    cam.viewfinder.zoom = 2.0;
+    cam.viewfinder.zoom = 4.0;
 
     parallaxBackground = await loadParallaxComponent([
         ParallaxImageData('Backgrounds/Level_1/BG1.png'),
