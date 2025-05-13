@@ -13,7 +13,7 @@ class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks 
   late JoystickComponent joyStick;
   late Player player;
   final jumpButton = JumpButton();
-  // Khai báo parallaxBackground component
+
   late ParallaxComponent parallaxBackground;
 
   @override
@@ -89,4 +89,5 @@ class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks 
     } else {
     }
   }
+
 }

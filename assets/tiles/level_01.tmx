@@ -85,7 +85,7 @@
  </layer>
  <objectgroup id="4" name="SpawnPoints" class="Player" opacity="0.9">
   <object id="4" name="Player" type="Player" x="192" y="208" width="32" height="32"/>
-  <object id="65" type="Checkpoint" x="310" y="223" width="64" height="64"/>
+  <object id="65" type="Checkpoint" x="320" y="224" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="5" name="Collisions">
   <object id="5" x="160" y="0" width="112" height="176"/>
@@ -107,7 +107,7 @@
   <object id="22" x="848" y="256" width="112" height="112"/>
   <object id="23" x="960" y="176" width="160" height="192"/>
   <object id="25" x="1120" y="192" width="48" height="176"/>
-  <object id="27" type="Platform" x="1168" y="176" width="48" height="192"/>
+  <object id="27" x="1168" y="176" width="48" height="192"/>
   <object id="28" x="1216" y="192" width="16" height="176"/>
   <object id="29" x="1232" y="208" width="16" height="160"/>
   <object id="30" x="1248" y="224" width="32" height="144"/>

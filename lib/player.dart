@@ -7,18 +7,18 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
 
-import 'levels/checkpoint.dart';
 
 enum PlayerState{idle, run, jump, fall}
 
 
-class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>, KeyboardHandler {
+class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>, KeyboardHandler, CollisionCallbacks  {
   Player({required Vector2 position}) : super(position: position);
   late final SpriteAnimation idle;
   late final SpriteAnimation run;
   late final SpriteAnimation jumpAnimation;
   late final SpriteAnimation fallAnimation;
   final double stepTime = 0.07;
+  late final RectangleHitbox customHitbox;
 
   double horizontal = 0;
   double speed = 70;
@@ -36,7 +36,7 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
 
   Vector2 velocity = Vector2.zero();
   List<CollisionBlock> collisionBlocks = [];
-  PlayerHitbox hitbox = PlayerHitbox(offsetX: 5, offsetY: 2, width: 0.5, height: 28);
+  PlayerHitbox hitbox = PlayerHitbox(offsetX: 8, offsetY: 6, width: 14, height: 26);
 
   double fixedDeltaTime = 1 / 60;
   double accumulatedTime = 0;
@@ -46,15 +46,14 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
   @override
   Future<void> onLoad() async {
     loadAllAnimation();
-    debugMode = true;
 
     anchor = Anchor.center;
-
-    add(RectangleHitbox(
-      position: Vector2(hitbox.offsetX - hitbox.width / 2, hitbox.offsetY - hitbox.height/2),
+    debugMode = true;
+    customHitbox = RectangleHitbox(
+      position: Vector2(hitbox.offsetX, hitbox.offsetY),
       size: Vector2(hitbox.width, hitbox.height),
-    ));
-
+    );
+    add(customHitbox);
     scale = Vector2.all(1);
 
     return super.onLoad();
@@ -161,23 +160,32 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
   }
 
   void checkHorizontalCollisions() {
+    final playerRect = customHitbox.toAbsoluteRect();
+
     for (final block in collisionBlocks) {
       if (!block.isPlatform) {
-        if (checkCollision(this, block)) {
+        final blockRect = Rect.fromLTWH(
+          block.x,
+          block.y,
+          block.width,
+          block.height,
+        );
+
+        if (playerRect.overlaps(blockRect)) {
           if (velocity.x > 0) {
             velocity.x = 0;
-            position.x = block.x - hitbox.offsetX - hitbox.width/2;
+            position.x = block.x - hitbox.width / 2;
             break;
-          }
-          if (velocity.x < 0) {
+          } else if (velocity.x < 0) {
             velocity.x = 0;
-            position.x = block.x + block.width + hitbox.width + hitbox.offsetX;
+            position.x = block.x + block.width + hitbox.width / 2;
             break;
           }
         }
       }
     }
   }
+
   void applyGravity(double dt) {
     velocity.y += gravity;
     velocity.y = velocity.y.clamp(-jumpForce, terminalVelocity);
@@ -193,7 +201,7 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
 
           if (velocity.y > 0 && playerBottom <= platformTop + 5) {
             velocity.y = 0;
-            position.y = platformTop - hitbox.height / 2 - hitbox.offsetY;
+            position.y = platformTop - hitbox.height / 2 - hitbox.offsetY/2;
             isOnGround = true;
             jumpCount = 0;
             break;
@@ -204,14 +212,14 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
         if (checkCollision(this, block)) {
           if (velocity.y > 0) {
             velocity.y = 0;
-            position.y = block.y - hitbox.height/2 - hitbox.offsetY;
+            position.y = block.y - hitbox.height/2 - hitbox.offsetY/2;
             isOnGround = true;
             jumpCount = 0;
             break;
           }
           if (velocity.y < 0) {
             velocity.y = 0;
-            position.y = block.y + block.height - hitbox.offsetY + hitbox.height/2;
+            position.y = block.y + block.height + hitbox.height/2- hitbox.offsetY/2;
           }
         }
       }

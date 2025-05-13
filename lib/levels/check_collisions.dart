@@ -1,33 +1,23 @@
-bool checkCollision(player, block) {
-  final hitbox = player.hitbox;
+import 'dart:ui';
 
-  final playerWidth = hitbox.width;
-  final playerHeight = hitbox.height;
+import '../player.dart';
+import 'collisions.dart';
 
-  // Tính toạ độ gốc của player (anchor center)
-  final playerCenterX = player.position.x;
-  final playerCenterY = player.position.y;
+bool checkCollision(Player player, CollisionBlock block) {
+  // Lấy hitbox vàng đã gán trong onLoad
+  final hitbox = player.customHitbox;
 
-  // Lật trái/phải ảnh hưởng đến offsetX
-  final offsetX = player.scale.x < 0
-      ? -hitbox.offsetX // Lật trái thì offset cũng lật
-      : hitbox.offsetX;
+  // Lấy Rect tuyệt đối của hitbox (vị trí thật trong thế giới game)
+  final Rect playerRect = hitbox.toAbsoluteRect();
 
-  // Tính toạ độ cạnh hitbox
-  final playerLeft = playerCenterX + offsetX - playerWidth / 2;
-  final playerTop = playerCenterY + hitbox.offsetY - playerHeight / 2;
-  final playerRight = playerLeft + playerWidth;
-  final playerBottom = playerTop + playerHeight;
+  // Tạo Rect của block (cũng là toạ độ tuyệt đối)
+  final Rect blockRect = Rect.fromLTWH(
+    block.x,
+    block.y,
+    block.width,
+    block.height,
+  );
 
-  // Toạ độ block
-  final blockLeft = block.x;
-  final blockTop = block.y;
-  final blockRight = blockLeft + block.width;
-  final blockBottom = blockTop + block.height;
-
-  // Va chạm
-  return (playerLeft < blockRight &&
-      playerRight > blockLeft &&
-      playerTop < blockBottom &&
-      playerBottom > blockTop);
+  // So sánh va chạm 2 Rect
+  return playerRect.overlaps(blockRect);
 }

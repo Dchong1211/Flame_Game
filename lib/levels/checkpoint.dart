@@ -50,7 +50,7 @@ class Checkpoint extends SpriteAnimationComponent
       game.images.fromCache(
           'Items/Checkpoint (Flag Out) (64x64).png'),
       SpriteAnimationData.sequenced(
-        amount: 12,
+        amount: 26,
         stepTime: 0.05,
         textureSize: Vector2.all(64),
         loop: false,
@@ -63,7 +63,7 @@ class Checkpoint extends SpriteAnimationComponent
       game.images.fromCache(
           'Items/Checkpoint (Flag Idle)(64x64).png'),
       SpriteAnimationData.sequenced(
-        amount: 12,
+        amount: 10,
         stepTime: 0.05,
         textureSize: Vector2.all(64),
       ),

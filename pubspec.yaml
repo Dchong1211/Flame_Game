@@ -65,13 +65,16 @@ flutter:
       - assets/images/Items/
       - assets/images/UI/
       - assets/tiles/level_01.tmx
+      - assets/tiles/level_02.tmx
       - assets/images/Tiles_images/
       - assets/images/Tiles_images/Tileset.png
+      - assets/images/Tiles_images/basic.png
       - assets/images/Character/
       - assets/images/Backgrounds/
       - assets/images/Backgrounds/Level_1/
       - assets/tiles/Game2D.tsx
       - assets/tiles/Decors.tsx
+      - assets/tiles/basic.tsx
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
