@@ -7,17 +7,11 @@ import 'package:flame/events.dart';
 class JumpButton extends SpriteComponent
     with HasGameReference<Game2D>, TapCallbacks {
   JumpButton();
-
-  final margin = 64;
-  final buttonSize = 64;
-
   @override
   FutureOr<void> onLoad() {
     sprite = Sprite(game.images.fromCache('UI/JumpButton.png'));
-    position = Vector2(
-      game.size.x - margin - buttonSize,
-      game.size.y - margin - buttonSize,
-    );
+    size = Vector2.all(96);
+    position = Vector2(750,350);
     return super.onLoad();
   }
 

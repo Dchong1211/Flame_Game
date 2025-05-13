@@ -14,7 +14,7 @@ class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks 
   late JoystickComponent joyStick;
   late Player player;
   final jumpButton = JumpButton();
-  //final attackButton = AttackButton();
+  final attackButton = AttackButton();
 
   late ParallaxComponent parallaxBackground;
 
@@ -33,7 +33,7 @@ class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks 
     cam.follow(player);
 
     add(cam);
-    cam.viewfinder.zoom = 4.0;
+    cam.viewfinder.zoom = 6.0;
 
     parallaxBackground = await loadParallaxComponent([
         ParallaxImageData('Backgrounds/Level_1/BG1.png'),
@@ -45,7 +45,7 @@ class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks 
       add(parallaxBackground);
     addJoyStick();
     cam.viewport.add(jumpButton);
-    //cam.viewport.add(attackButton);
+    cam.viewport.add(attackButton);
     return super.onLoad();
   }
 
@@ -62,11 +62,11 @@ class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks 
     joyStick = JoystickComponent(
       knob: SpriteComponent(
         sprite: Sprite(images.fromCache('UI/Knob.png')),
-        size: Vector2(64, 64),
+        size: Vector2(48, 48),
       ),
       background: SpriteComponent(
         sprite: Sprite(images.fromCache('UI/Joystick.png')),
-        size: Vector2(128, 128),
+        size: Vector2(96, 96),
       ),
       margin: const EdgeInsets.only(left: 64, bottom: 32),
     );
