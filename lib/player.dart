@@ -196,7 +196,7 @@ class Player extends SpriteAnimationGroupComponent with HasGameReference<Game2D>
     for (final block in collisionBlocks) {
       if (block.isPlatform) {
         if (checkCollision(this, block)) {
-          final playerBottom = position.y + hitbox.height / 2 + hitbox.offsetY;
+          final playerBottom = position.y + hitbox.height / 2 + hitbox.offsetY/2;
           final platformTop = block.y;
 
           if (velocity.y > 0 && playerBottom <= platformTop + 5) {

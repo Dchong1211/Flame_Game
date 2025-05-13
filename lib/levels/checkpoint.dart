@@ -1,11 +1,9 @@
-
 import 'dart:async';
-
 import 'package:final_project/game2d.dart';
+import 'package:final_project/player.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
-import '../player.dart';
 
 class Checkpoint extends SpriteAnimationComponent
     with HasGameReference<Game2D>, CollisionCallbacks {
@@ -14,12 +12,12 @@ class Checkpoint extends SpriteAnimationComponent
     size,
   }) : super(
     position: position,
-    size: size
+    size: size,
   );
 
   @override
   FutureOr<void> onLoad() {
-    // debugMode = true;
+    debugMode = true;
     add(RectangleHitbox(
       position: Vector2(18, 56),
       size: Vector2(12, 8),

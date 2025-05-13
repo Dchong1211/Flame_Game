@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:final_project/levels/attack_button.dart';
 import 'package:final_project/levels/jump_button.dart';
 import 'package:final_project/levels/level.dart'; // Import lớp Level
 import 'package:final_project/player.dart';
@@ -13,6 +14,7 @@ class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks 
   late JoystickComponent joyStick;
   late Player player;
   final jumpButton = JumpButton();
+  //final attackButton = AttackButton();
 
   late ParallaxComponent parallaxBackground;
 
@@ -43,6 +45,7 @@ class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks 
       add(parallaxBackground);
     addJoyStick();
     cam.viewport.add(jumpButton);
+    //cam.viewport.add(attackButton);
     return super.onLoad();
   }
 
