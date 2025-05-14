@@ -16,7 +16,7 @@ class AttackButton extends SpriteComponent
   }
   @override
   void onTapDown(TapDownEvent event) {
-    //game.player.attack(); // Gọi hàm tấn công của player
+    game.player.attack();
     super.onTapDown(event);
   }
 }

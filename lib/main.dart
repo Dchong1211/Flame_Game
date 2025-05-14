@@ -9,5 +9,5 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Flame.device.fullScreen();
   await Flame.device.setLandscape();
-  runApp(GameWidget(game: kDebugMode ? Game2D(): game));
+  runApp(GameWidget(game: kDebugMode ?  Game2D(): game));
 }

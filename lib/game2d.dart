@@ -9,6 +9,8 @@ import 'package:flame/game.dart';
 import 'package:flame/parallax.dart';
 import 'package:flutter/cupertino.dart';
 
+import 'levels/enemy.dart';
+
 class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks {
   late final CameraComponent cam;
   late JoystickComponent joyStick;
@@ -27,13 +29,14 @@ class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks 
 
     player = world.player!;
     player.collisionBlocks = world.collisionBlocks;
-
+    final enemy = Enemy(player: player, position: Vector2(300, 100));
+    add(enemy);
     cam = CameraComponent(world: world);
     cam.viewfinder.anchor = Anchor.center;
     cam.follow(player);
 
     add(cam);
-    cam.viewfinder.zoom = 4.0;
+    cam.viewfinder.zoom = 5.0;
 
     parallaxBackground = await loadParallaxComponent([
         ParallaxImageData('Backgrounds/Level_1/BG1.png'),
@@ -62,11 +65,11 @@ class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks 
     joyStick = JoystickComponent(
       knob: SpriteComponent(
         sprite: Sprite(images.fromCache('UI/Knob.png')),
-        size: Vector2(48, 48),
+        size: Vector2(64, 64),
       ),
       background: SpriteComponent(
         sprite: Sprite(images.fromCache('UI/Joystick.png')),
-        size: Vector2(96, 96),
+        size: Vector2(128, 128),
       ),
       margin: const EdgeInsets.only(left: 64, bottom: 32),
     );
@@ -87,10 +90,28 @@ class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks 
           player.horizontal = 1;
           break;
         default:
+          player.horizontal = 0;
           break;
       }
     } else {
+
     }
   }
-
+  // void updateJoystick() {
+  //   switch (joyStick.direction) {
+  //     case JoystickDirection.left:
+  //     case JoystickDirection.upLeft:
+  //     case JoystickDirection.downLeft:
+  //       player.horizontal = -1;
+  //       break;
+  //     case JoystickDirection.right:
+  //     case JoystickDirection.upRight:
+  //     case JoystickDirection.downRight:
+  //       player.horizontal = 1;
+  //       break;
+  //     default:
+  //       player.horizontal = 0;
+  //       break;
+  //   }
+  // }
 }

@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   flame: ^1.28.1
   flame_tiled: ^3.0.2
+  duration: ^4.0.3
 
 dev_dependencies:
   flutter_test:
@@ -69,13 +70,21 @@ flutter:
       - assets/images/Tiles_images/
       - assets/images/Tiles_images/Tileset.png
       - assets/images/Tiles_images/basic.png
+      - assets/images/Tiles_images/Assets.png
       - assets/images/Character/
       - assets/images/Backgrounds/
       - assets/images/Backgrounds/Level_1/
       - assets/tiles/Game2D.tsx
       - assets/tiles/Decors.tsx
       - assets/tiles/basic.tsx
-
+      - assets/tiles/LevelTrongGay.tmx
+      - assets/tiles/Assets.tsx
+      - assets/tiles/Tileset.tsx
+      - assets/tiles/ExampleTiles.tsx
+      - assets/images/Tiles_images/ExampleTiles.png
+      - assets/images/Character/_Attack1.png
+      - assets/images/Character/_Attack2.png
+      - assets/images/Character/_Attack3.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
