@@ -13,7 +13,6 @@ class Heart extends SpriteAnimationComponent
     this.heart = 'Heart',
     super.position,
     super.size,
-    super.priority = 2
   }) : super(
   );
   Player? player;

@@ -33,7 +33,7 @@ class Level extends World {
               position: Vector2(spawnPoint.x, spawnPoint.y),
               size: Vector2(spawnPoint.width, spawnPoint.height),
             );
-            add(coins);
+            level.add(coins);
             break;
           case 'Heart':
             final hearts = Heart(
@@ -41,7 +41,7 @@ class Level extends World {
               position: Vector2(spawnPoint.x, spawnPoint.y),
               size: Vector2(spawnPoint.width, spawnPoint.height),
             );
-            add(hearts);
+            level.add(hearts);
             break;
           case 'Shuriken':
             final isVertical = spawnPoint.properties.getValue('isVertical');

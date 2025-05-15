@@ -87,7 +87,7 @@
   <object id="4" name="Player" type="Player" x="272" y="256" width="32" height="32"/>
   <object id="65" type="Checkpoint" x="304" y="224" width="64" height="64"/>
   <object id="76" name="Coins" type="Coins" x="452" y="180" width="8" height="8"/>
-  <object id="85" name="Heart" type="Heart" x="324" y="112" width="8" height="8"/>
+  <object id="85" name="Heart" type="Heart" x="292" y="116" width="8" height="8"/>
   <object id="78" name="Coins" type="Coins" x="468" y="180" width="8" height="8"/>
   <object id="79" name="Coins" type="Coins" x="484" y="180" width="8" height="8"/>
   <object id="80" name="Coins" type="Coins" x="500" y="180" width="8" height="8"/>
@@ -119,7 +119,7 @@
   <object id="22" x="848" y="256" width="112" height="112"/>
   <object id="23" x="960" y="176" width="160" height="192"/>
   <object id="25" x="1120" y="192" width="48" height="176"/>
-  <object id="27" type="Platform" x="1168" y="176" width="48" height="192"/>
+  <object id="27" x="1168" y="176" width="48" height="192"/>
   <object id="28" x="1216" y="192" width="16" height="176"/>
   <object id="29" x="1232" y="208" width="16" height="160"/>
   <object id="30" x="1248" y="224" width="32" height="144"/>

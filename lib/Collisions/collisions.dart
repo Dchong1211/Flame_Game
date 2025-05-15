@@ -6,5 +6,5 @@ class CollisionBlock extends PositionComponent{
     super.position,
     super.size,
     this.isPlatform = false,
-  }): super(priority: 0);
+  });
 }
