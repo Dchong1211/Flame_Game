@@ -12,14 +12,12 @@ class CoinCounter extends PositionComponent with HasGameReference<Knight> {
   Future<void> onLoad() async {
     position = Vector2(970, 20);
 
-    // Load hình coin
-    final sprite = Sprite(game.images.fromCache('Items/coinCount.png'));
+    final sprite = Sprite(game.images.fromCache('Items/CoinCount.png'));
     coinIcon = SpriteComponent(
       sprite: sprite,
       size: Vector2(32, 32),
     );
 
-    // Text số coin
     coinText = TextComponent(
       text: '${game.coinCount}',
       position: Vector2(40, 3),

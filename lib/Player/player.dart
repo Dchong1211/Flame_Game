@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:final_project/Items/coins.dart';
+import 'package:final_project/Items/heart.dart';
+import 'package:final_project/Traps/shuriken.dart';
 import 'package:final_project/knight.dart';
 import 'package:final_project/Collisions/check_collisions.dart';
 import 'package:final_project/Collisions/collisions.dart';
@@ -9,7 +11,7 @@ import 'package:flutter/services.dart';
 
 import '../Collisions/hitbox.dart';
 
-enum PlayerState { idle, run, jump, fall, attack1, attack2, attack3, death }
+enum PlayerState { idle, run, jump, fall, attack1, attack2, attack3, hit, death }
 
 class Player extends SpriteAnimationGroupComponent
     with HasGameReference<Knight>, KeyboardHandler, CollisionCallbacks {
@@ -22,6 +24,7 @@ class Player extends SpriteAnimationGroupComponent
   late final SpriteAnimation attack1Animation;
   late final SpriteAnimation attack2Animation;
   late final SpriteAnimation attack3Animation;
+  late final SpriteAnimation hitAnimation;
   late final SpriteAnimation deathAnimation;
 
   final double stepTime = 0.07;
@@ -39,10 +42,12 @@ class Player extends SpriteAnimationGroupComponent
   int jumpCount = 0;
   final int maxJumps = 2;
   int lastDirection = 1;
+  int heartCount = 3;
 
   Vector2 velocity = Vector2.zero();
   List<CollisionBlock> collisionBlocks = [];
   PlayerHitbox hitbox = PlayerHitbox(offsetX: 20, offsetY: 26, width: 24, height: 38);
+  Vector2 startingPosition = Vector2.zero();
 
   double fixedDeltaTime = 1 / 60;
   double accumulatedTime = 0;
@@ -52,13 +57,17 @@ class Player extends SpriteAnimationGroupComponent
   int queuedCombo = 0;
   bool isAttacking = false;
 
+  final double invincibleDuration = 1;
+  double invincibleTimer = 0.0;
+
+
   @override
   Future<void> onLoad() async {
-    await super.onLoad(); // <- Sửa chỗ này
+    await super.onLoad();
     loadAllAnimation();
-
+    startingPosition = Vector2(position.x, position.y);
     anchor = Anchor.center;
-    //debugMode = true;
+    debugMode = true;
 
     customHitbox = RectangleHitbox(
       position: Vector2(hitbox.offsetX, hitbox.offsetY),
@@ -100,11 +109,19 @@ class Player extends SpriteAnimationGroupComponent
         updatePlayerState();
         updatePlayerMovement(fixedDeltaTime);
         checkHorizontalCollisions();
-        applyGravity(fixedDeltaTime);
-        checkVerticalCollisions();
       }
 
+      applyGravity(fixedDeltaTime);
+      checkVerticalCollisions();
+
       accumulatedTime -= fixedDeltaTime;
+    }
+
+    if (invincibleTimer > 0) {
+      invincibleTimer -= dt;
+      if (invincibleTimer <= 0) {
+        gotHit = false;
+      }
     }
 
     super.update(dt);
@@ -116,6 +133,8 @@ class Player extends SpriteAnimationGroupComponent
       Set<Vector2> intersectionPoints, PositionComponent other) {
     if (!reachedCheckpoint) {
       if (other is Coins) other.collidedWithPlayer();
+      if (other is Heart) other.collidedWithPlayer();
+      if (other is Shuriken) hurt();
       //if (other is Checkpoint) _reachedCheckpoint();
     }
     super.onCollisionStart(intersectionPoints, other);
@@ -141,6 +160,7 @@ class Player extends SpriteAnimationGroupComponent
     attack1Animation = loadAnimation('Character/_Attack1.png', 6, loop: false);
     attack2Animation = loadAnimation('Character/_Attack2.png', 5, loop: false);
     attack3Animation = loadAnimation('Character/_Attack3.png', 6, loop: false);
+    hitAnimation = loadAnimation('Character/_Hit.png', 4, loop: false);
     deathAnimation = loadAnimation('Character/_Death.png', 12, loop: false);
 
     animations = {
@@ -151,6 +171,7 @@ class Player extends SpriteAnimationGroupComponent
       PlayerState.attack1: attack1Animation,
       PlayerState.attack2: attack2Animation,
       PlayerState.attack3: attack3Animation,
+      PlayerState.hit: hitAnimation,
       PlayerState.death: deathAnimation
     };
     current = PlayerState.idle;
@@ -176,7 +197,7 @@ class Player extends SpriteAnimationGroupComponent
 
 
   void updatePlayerState() {
-    if (isAttacking) return; // Không thay đổi animation khi đang attack
+    if (isAttacking) return;
 
     PlayerState playerState = PlayerState.idle;
 
@@ -226,7 +247,7 @@ class Player extends SpriteAnimationGroupComponent
 
         if (block.isPlatform) {
           final platformTop = block.y;
-          if (velocity.y > 0 && playerBottom <= platformTop + 10) {
+          if (velocity.y > 0 && playerBottom <= platformTop + 7) {
             velocity.y = 0;
             position.y = platformTop - hitbox.height / 4 - hitbox.offsetY / 4;
             isOnGround = true;
@@ -296,11 +317,48 @@ class Player extends SpriteAnimationGroupComponent
       }
     };
   }
-
   void resetCombo() {
     isAttacking = false;
     currentCombo = 0;
     queuedCombo = 0;
     animationTicker?.onComplete = null;
   }
+  void hurt(){
+    if (gotHit) return;
+
+    heartCount -= 1;
+    gotHit = true;
+    invincibleTimer = invincibleDuration;
+
+    if(heartCount > 0){
+      current = PlayerState.hit;
+    } else {
+      respawn();
+    }
+  }
+
+  void respawn() async {
+    const canMoveDuration = Duration(milliseconds: 400);
+
+    gotHit = true;
+    isAttacking = false;
+    horizontal = 0;
+    velocity = Vector2.zero();
+    lastDirection = 1;
+    currentCombo = 0;
+    queuedCombo = 0;
+    heartCount = 3;
+
+    current = PlayerState.death;
+    await animationTicker?.completed;
+    animationTicker?.reset();
+
+    scale = Vector2.all(0.5);
+    position = startingPosition - Vector2(0,32);
+    current = PlayerState.idle;
+
+    await Future.delayed(canMoveDuration);
+    gotHit = false;
+  }
+
 }

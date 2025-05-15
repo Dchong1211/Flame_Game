@@ -2,7 +2,9 @@ import 'dart:async';
 import 'package:final_project/Items/checkpoint.dart';
 import 'package:final_project/Items/coins.dart';
 import 'package:final_project/Collisions/collisions.dart';
+import 'package:final_project/Items/heart.dart';
 import 'package:final_project/Player/player.dart';
+import 'package:final_project/Traps/shuriken.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 
@@ -22,16 +24,37 @@ class Level extends World {
       for (final spawnPoint in spawnPointsLayer.objects) {
         switch (spawnPoint.class_) {
           case 'Player':
-            player = Player(position: Vector2(spawnPoint.x, spawnPoint.y));
+            player = Player(position: Vector2(spawnPoint.x + 16, spawnPoint.y + 16));
             add(player!);
             break;
           case 'Coins':
-            final fruit = Coins(
+            final coins = Coins(
               coin: spawnPoint.name,
               position: Vector2(spawnPoint.x, spawnPoint.y),
               size: Vector2(spawnPoint.width, spawnPoint.height),
             );
-            add(fruit);
+            add(coins);
+            break;
+          case 'Heart':
+            final hearts = Heart(
+              heart: spawnPoint.name,
+              position: Vector2(spawnPoint.x, spawnPoint.y),
+              size: Vector2(spawnPoint.width, spawnPoint.height),
+            );
+            add(hearts);
+            break;
+          case 'Shuriken':
+            final isVertical = spawnPoint.properties.getValue('isVertical');
+            final offNeg = spawnPoint.properties.getValue('offNeg');
+            final offPos = spawnPoint.properties.getValue('offPos');
+            final shuriken = Shuriken(
+              isVertical: isVertical,
+              offNeg: offNeg,
+              offPos: offPos,
+              position: Vector2(spawnPoint.x, spawnPoint.y),
+              size: Vector2(spawnPoint.width, spawnPoint.height),
+            );
+            add(shuriken);
             break;
           case 'Checkpoint':
             final checkpoint = Checkpoint(

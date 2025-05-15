@@ -4,20 +4,18 @@ import 'package:final_project/knight.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
-class Saw extends SpriteAnimationComponent with HasGameReference<Knight> {
+class Shuriken extends SpriteAnimationComponent with HasGameReference<Knight> {
   final bool isVertical;
   final double offNeg;
   final double offPos;
-  Saw({
+  Shuriken({
     this.isVertical = false,
     this.offNeg = 0,
     this.offPos = 0,
-    position,
-    size,
-  }) : super(
-    position: position,
-    size: size,
-  );
+    super.position,
+    super.size,
+  });
+
 
   static const double sawSpeed = 0.03;
   static const moveSpeed = 50;
@@ -51,6 +49,7 @@ class Saw extends SpriteAnimationComponent with HasGameReference<Knight> {
 
   @override
   void update(double dt) {
+
     if (isVertical) {
       _moveVertically(dt);
     } else {

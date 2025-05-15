@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:final_project/Items/heart_counter.dart';
 import 'package:final_project/Player/attack_button.dart';
 import 'package:final_project/Player/jump_button.dart';
 import 'package:final_project/Player/player.dart';
@@ -16,6 +17,7 @@ class Knight extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks,
   late JoystickComponent joyStick;
   late Player player;
   int coinCount = 0;
+  int heartCount = 0;
   final jumpButton = JumpButton();
   final attackButton = AttackButton();
 
@@ -49,11 +51,13 @@ class Knight extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks,
     cam.viewport.add(jumpButton);
     cam.viewport.add(attackButton);
     cam.viewport.add(CoinCounter());
+    cam.viewport.add(HeartCounter());
     return super.onLoad();
   }
 
   @override
   void update(double dt) {
+    heartCount = player.heartCount;
     updateJoystick();
     if (parallaxBackground.parallax != null) {
       parallaxBackground.parallax!.baseVelocity = Vector2(player.velocity.x * 0.3, 0);
