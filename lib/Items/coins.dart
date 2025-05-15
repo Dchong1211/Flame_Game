@@ -12,6 +12,7 @@ class Coins extends SpriteAnimationComponent
     this.coin = 'Coins',
     super.position,
     super.size,
+    super.priority = 2
   }) : super(
   );
 

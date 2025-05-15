@@ -87,7 +87,7 @@
   <object id="4" name="Player" type="Player" x="272" y="256" width="32" height="32"/>
   <object id="65" type="Checkpoint" x="304" y="224" width="64" height="64"/>
   <object id="76" name="Coins" type="Coins" x="452" y="180" width="8" height="8"/>
-  <object id="85" name="Heart" type="Heart" x="292" y="116" width="8" height="8"/>
+  <object id="85" name="Heart" type="Heart" x="324" y="112" width="8" height="8"/>
   <object id="78" name="Coins" type="Coins" x="468" y="180" width="8" height="8"/>
   <object id="79" name="Coins" type="Coins" x="484" y="180" width="8" height="8"/>
   <object id="80" name="Coins" type="Coins" x="500" y="180" width="8" height="8"/>

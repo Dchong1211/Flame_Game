@@ -13,6 +13,7 @@ class Heart extends SpriteAnimationComponent
     this.heart = 'Heart',
     super.position,
     super.size,
+    super.priority = 2
   }) : super(
   );
   Player? player;
@@ -28,7 +29,7 @@ class Heart extends SpriteAnimationComponent
   @override
   FutureOr<void> onLoad() {
     priority = -1;
-    debugMode = true;
+    //debugMode = true;
     add(
       RectangleHitbox(
         size: Vector2(hitbox.width, hitbox.height),
