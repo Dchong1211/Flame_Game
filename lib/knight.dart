@@ -11,7 +11,7 @@ import 'package:flutter/cupertino.dart';
 
 import 'Items/coin_counter.dart';
 
-class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks, HasCollisionDetection {
+class Knight extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks, HasCollisionDetection {
   late final CameraComponent cam;
   late JoystickComponent joyStick;
   late Player player;

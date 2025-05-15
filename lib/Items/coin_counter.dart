@@ -2,9 +2,9 @@ import 'package:flame/components.dart';
 import 'package:flame/palette.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../game2d.dart';
+import '../knight.dart';
 
-class CoinCounter extends PositionComponent with HasGameReference<Game2D> {
+class CoinCounter extends PositionComponent with HasGameReference<Knight> {
   late final SpriteComponent coinIcon;
   late final TextComponent coinText;
 

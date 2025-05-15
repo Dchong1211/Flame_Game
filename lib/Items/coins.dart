@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:final_project/game2d.dart';
+import 'package:final_project/knight.dart';
 import 'package:final_project/Collisions/hitbox.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
 class Coins extends SpriteAnimationComponent
-    with HasGameReference<Game2D>, CollisionCallbacks {
+    with HasGameReference<Knight>, CollisionCallbacks {
   final String coin;
   Coins({
     this.coin = 'Coins',

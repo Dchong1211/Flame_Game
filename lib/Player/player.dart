@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:final_project/Items/coins.dart';
-import 'package:final_project/game2d.dart';
+import 'package:final_project/knight.dart';
 import 'package:final_project/Collisions/check_collisions.dart';
 import 'package:final_project/Collisions/collisions.dart';
 import 'package:flame/collisions.dart';
@@ -12,7 +12,7 @@ import '../Collisions/hitbox.dart';
 enum PlayerState { idle, run, jump, fall, attack1, attack2, attack3, death }
 
 class Player extends SpriteAnimationGroupComponent
-    with HasGameReference<Game2D>, KeyboardHandler, CollisionCallbacks {
+    with HasGameReference<Knight>, KeyboardHandler, CollisionCallbacks {
   Player({required Vector2 position}) : super(position: position);
 
   late final SpriteAnimation idleAnimation;

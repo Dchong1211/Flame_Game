@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:final_project/game2d.dart';
+import 'package:final_project/knight.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 
 class JumpButton extends SpriteComponent
-    with HasGameReference<Game2D>, TapCallbacks {
+    with HasGameReference<Knight>, TapCallbacks {
   JumpButton();
   @override
   FutureOr<void> onLoad() {

@@ -1,13 +1,13 @@
-import 'package:final_project/game2d.dart';
+import 'package:final_project/knight.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 
 void main() async {
-  Game2D game = Game2D();
+  Knight game = Knight();
   WidgetsFlutterBinding.ensureInitialized();
   await Flame.device.fullScreen();
   await Flame.device.setLandscape();
-  runApp(GameWidget(game: kDebugMode ?  Game2D(): game));
+  runApp(GameWidget(game: kDebugMode ?  Knight(): game));
 }
