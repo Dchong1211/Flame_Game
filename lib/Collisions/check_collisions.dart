@@ -1,6 +1,5 @@
 import 'dart:ui';
-
-import '../player.dart';
+import 'package:final_project/Player/player.dart';
 import 'collisions.dart';
 
 bool checkCollision(Player player, CollisionBlock block) {

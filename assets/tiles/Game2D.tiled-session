@@ -183,8 +183,8 @@
             "scale": 3,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 384,
-                "y": 244.16666666666669
+                "x": 800.1666666666666,
+                "y": 184.16666666666669
             }
         },
         "level_02.tmx": {
@@ -239,7 +239,7 @@
         "level_04.tmx"
     ],
     "project": "Game2D.tiled-project",
-    "property.type": "object",
+    "property.type": "float",
     "recentFiles": [
         "Decors.tsx",
         "level_04.tmx",

@@ -1,20 +1,21 @@
 import 'dart:async';
-import 'package:final_project/levels/attack_button.dart';
-import 'package:final_project/levels/jump_button.dart';
-import 'package:final_project/levels/level.dart'; // Import lớp Level
-import 'package:final_project/player.dart';
-import 'package:flame/components.dart'; // Chứa ParallaxComponent và ParallaxImageData
+import 'package:final_project/Player/attack_button.dart';
+import 'package:final_project/Player/jump_button.dart';
+import 'package:final_project/Player/player.dart';
+import 'package:final_project/levels/level.dart';
+import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame/parallax.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'levels/enemy.dart';
+import 'Items/coin_counter.dart';
 
-class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks {
+class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks, HasCollisionDetection {
   late final CameraComponent cam;
   late JoystickComponent joyStick;
   late Player player;
+  int coinCount = 0;
   final jumpButton = JumpButton();
   final attackButton = AttackButton();
 
@@ -29,8 +30,6 @@ class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks 
 
     player = world.player!;
     player.collisionBlocks = world.collisionBlocks;
-    final enemy = Enemy(player: player, position: Vector2(300, 100));
-    add(enemy);
     cam = CameraComponent(world: world);
     cam.viewfinder.anchor = Anchor.center;
     cam.follow(player);
@@ -49,6 +48,7 @@ class Game2D extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks 
     addJoyStick();
     cam.viewport.add(jumpButton);
     cam.viewport.add(attackButton);
+    cam.viewport.add(CoinCounter());
     return super.onLoad();
   }
 

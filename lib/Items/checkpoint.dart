@@ -1,6 +1,6 @@
 import 'dart:async';
+import 'package:final_project/Player/player.dart';
 import 'package:final_project/game2d.dart';
-import 'package:final_project/player.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
@@ -8,12 +8,10 @@ import 'package:flame/components.dart';
 class Checkpoint extends SpriteAnimationComponent
     with HasGameReference<Game2D>, CollisionCallbacks {
   Checkpoint({
-    position,
-    size,
-  }) : super(
-    position: position,
-    size: size,
-  );
+    super.position,
+    super.size,
+  });
+
 
   @override
   FutureOr<void> onLoad() async{

@@ -1,11 +1,13 @@
 import 'dart:async';
+import 'package:final_project/Items/coins.dart';
 import 'package:final_project/game2d.dart';
-import 'package:final_project/levels/check_collisions.dart';
-import 'package:final_project/levels/collisions.dart';
-import 'package:final_project/levels/hitbox.dart';
+import 'package:final_project/Collisions/check_collisions.dart';
+import 'package:final_project/Collisions/collisions.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
+
+import '../Collisions/hitbox.dart';
 
 enum PlayerState { idle, run, jump, fall, attack1, attack2, attack3, death }
 
@@ -61,6 +63,7 @@ class Player extends SpriteAnimationGroupComponent
     customHitbox = RectangleHitbox(
       position: Vector2(hitbox.offsetX, hitbox.offsetY),
       size: Vector2(hitbox.width, hitbox.height),
+
     );
     add(customHitbox);
 
@@ -105,6 +108,17 @@ class Player extends SpriteAnimationGroupComponent
     }
 
     super.update(dt);
+  }
+
+
+  @override
+  void onCollisionStart(
+      Set<Vector2> intersectionPoints, PositionComponent other) {
+    if (!reachedCheckpoint) {
+      if (other is Coins) other.collidedWithPlayer();
+      //if (other is Checkpoint) _reachedCheckpoint();
+    }
+    super.onCollisionStart(intersectionPoints, other);
   }
 
   SpriteAnimation loadAnimation(String path, int frame, {bool loop = true}) {

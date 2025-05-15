@@ -1,7 +1,8 @@
 import 'dart:async';
-import 'package:final_project/levels/checkpoint.dart';
-import 'package:final_project/levels/collisions.dart';
-import 'package:final_project/player.dart';
+import 'package:final_project/Items/checkpoint.dart';
+import 'package:final_project/Items/coins.dart';
+import 'package:final_project/Collisions/collisions.dart';
+import 'package:final_project/Player/player.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 
@@ -23,6 +24,14 @@ class Level extends World {
           case 'Player':
             player = Player(position: Vector2(spawnPoint.x, spawnPoint.y));
             add(player!);
+            break;
+          case 'Coins':
+            final fruit = Coins(
+              coin: spawnPoint.name,
+              position: Vector2(spawnPoint.x, spawnPoint.y),
+              size: Vector2(spawnPoint.width, spawnPoint.height),
+            );
+            add(fruit);
             break;
           case 'Checkpoint':
             final checkpoint = Checkpoint(
