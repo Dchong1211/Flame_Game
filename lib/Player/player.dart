@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:final_project/Items/checkpoint.dart';
 import 'package:final_project/Items/coins.dart';
 import 'package:final_project/Items/heart.dart';
 import 'package:final_project/Traps/shuriken.dart';
@@ -135,7 +136,7 @@ class Player extends SpriteAnimationGroupComponent
       if (other is Coins) other.collidedWithPlayer();
       if (other is Heart) other.collidedWithPlayer();
       if (other is Shuriken) hurt();
-      //if (other is Checkpoint) _reachedCheckpoint();
+      if (other is Checkpoint) _reachedCheckpoint();
     }
     super.onCollisionStart(intersectionPoints, other);
   }
@@ -147,7 +148,7 @@ class Player extends SpriteAnimationGroupComponent
         amount: frame,
         stepTime: stepTime,
         textureSize: Vector2(64, 64),
-        loop: loop, // quan trọng!
+        loop: loop,
       ),
     );
   }
@@ -361,4 +362,18 @@ class Player extends SpriteAnimationGroupComponent
     gotHit = false;
   }
 
+
+  void _reachedCheckpoint() async {
+    reachedCheckpoint = true;
+    current = PlayerState.idle;
+    isAttacking = false;
+    horizontal = 0;
+    velocity = Vector2.zero();
+    await Future.delayed(const Duration(seconds: 2));
+    await game.loadNextLevel();
+    reachedCheckpoint = false;
+  }
+  // void collidedwithEnemy() {
+  //   hurt();
+  // }
 }

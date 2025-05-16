@@ -142,6 +142,14 @@
                 "y": 184.21052631578948
             }
         },
+        "LevelTrongGay.tmx": {
+            "scale": 0.555625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 759.5050618672665,
+                "y": 384.251968503937
+            }
+        },
         "Level_02.tmx": {
             "scale": 1,
             "selectedLayer": 0,
@@ -181,18 +189,18 @@
                 5
             ],
             "scale": 3,
-            "selectedLayer": 4,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 800.1666666666666,
-                "y": 184.16666666666669
+                "x": 398,
+                "y": 108.83333333333331
             }
         },
         "level_02.tmx": {
-            "scale": 1.5,
+            "scale": 4,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 640.3333333333333,
-                "y": 183.66666666666666
+                "x": 377.25,
+                "y": 258.625
             }
         },
         "level_02.tmx#Terrain_and_Props": {
@@ -204,7 +212,7 @@
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 2421.6666666666665,
+                "x": 2422,
                 "y": 320.33333333333337
             }
         },
