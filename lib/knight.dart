@@ -23,6 +23,8 @@ class Knight extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks,
   List<String> levelNames = ['level_01', 'level_02'];
   int currentLevelIndex = 0;
   late ParallaxComponent parallaxBackground;
+  bool playSounds = true;
+  double soundVolume = 1.0;
 
   @override
   FutureOr<void> onLoad() async {

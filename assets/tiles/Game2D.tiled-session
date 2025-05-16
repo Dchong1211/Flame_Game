@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "level_01.tmx",
+    "activeFile": "level_02.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -17,6 +17,9 @@
             "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "Assets.tsx": {
+            "scaleInDock": 1
         },
         "BG_1.tsx": {
             "dynamicWrapping": true,
@@ -63,6 +66,9 @@
             "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "ExampleTiles.tsx": {
+            "scaleInDock": 1
         },
         "F:/Documents/Zalo Received Files/Level_02/BG_1.tsx": {
             "scaleInDock": 1
@@ -196,11 +202,14 @@
             }
         },
         "level_02.tmx": {
-            "scale": 4,
+            "expandedObjectLayers": [
+                6
+            ],
+            "scale": 1,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 377.25,
-                "y": 258.625
+                "x": 399,
+                "y": 148.5
             }
         },
         "level_02.tmx#Terrain_and_Props": {
@@ -244,23 +253,24 @@
         "level_01.tmx",
         "level_02.tmx",
         "basic.tsx",
-        "level_04.tmx"
+        "level_04.tmx",
+        "LevelTrongGay.tmx"
     ],
     "project": "Game2D.tiled-project",
     "property.type": "float",
     "recentFiles": [
         "Decors.tsx",
+        "level_01.tmx",
+        "LevelTrongGay.tmx",
         "level_04.tmx",
         "basic.tsx",
         "level_02.tmx",
-        "level_01.tmx",
         "Game2D.tsx",
         "Free.tmx",
         "F:/Downloads/forest-nature-fantasy-tileset-free/Fantasy Swamp Forest/Free/Free.tmx",
         "Sale-board.tsx",
         "Terrain_and_Props.tsx",
-        "Level_02.tmx",
-        "level_3.tmx"
+        "Level_02.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
