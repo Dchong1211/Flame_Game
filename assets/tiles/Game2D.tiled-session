@@ -1,0 +1,289 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "level_04.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        ":/automap-tiles.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Assets.tsx": {
+            "scaleInDock": 1
+        },
+        "BG_1.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "BG_2.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "BG_3.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Android/AndroidStudioProjects/Final_Project/assets/Level_02/BG_1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 0.5
+        },
+        "C:/Android/AndroidStudioProjects/Final_Project/assets/Level_02/BG_2.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Android/AndroidStudioProjects/Final_Project/assets/Level_02/BG_3.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Android/AndroidStudioProjects/Final_Project/assets/Level_02/Level_02.tmx": {
+            "expandedObjectLayers": [
+                9,
+                8
+            ],
+            "scale": 1.5,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": -348.99999999999994,
+                "y": -1.6666666666666856
+            }
+        },
+        "C:/Android/AndroidStudioProjects/Final_Project/assets/Level_02/Terrain_and_Props.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "Decors.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ExampleTiles.tsx": {
+            "scaleInDock": 1
+        },
+        "F:/Documents/Zalo Received Files/Level_02/BG_1.tsx": {
+            "scaleInDock": 1
+        },
+        "F:/Documents/Zalo Received Files/Level_02/BG_2.tsx": {
+            "scaleInDock": 1
+        },
+        "F:/Documents/Zalo Received Files/Level_02/BG_3.tsx": {
+            "scaleInDock": 1
+        },
+        "F:/Documents/Zalo Received Files/Level_02/Level_02.tmx": {
+            "scale": 0.33,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 375.75757575757586,
+                "y": -10.606060606060623
+            }
+        },
+        "F:/Documents/Zalo Received Files/Level_02/Terrain_and_Props.tsx": {
+            "scaleInDock": 1
+        },
+        "F:/Downloads/forest-nature-fantasy-tileset-free/Fantasy Swamp Forest/Free/BG_1.tsx": {
+            "scaleInDock": 1
+        },
+        "F:/Downloads/forest-nature-fantasy-tileset-free/Fantasy Swamp Forest/Free/BG_2.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "F:/Downloads/forest-nature-fantasy-tileset-free/Fantasy Swamp Forest/Free/BG_3.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "F:/Downloads/forest-nature-fantasy-tileset-free/Fantasy Swamp Forest/Free/Free.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 267,
+                "y": 236.5
+            }
+        },
+        "F:/Downloads/forest-nature-fantasy-tileset-free/Fantasy Swamp Forest/Free/Terrain_and_Props.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "F:/Downloads/pixel_adventure-master/pixel_adventure-master/assets/tiles/Level-01.tmx": {
+            "expandedObjectLayers": [
+                3
+            ],
+            "scale": 1.42,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 319.3661971830986,
+                "y": 184.1549295774648
+            }
+        },
+        "F:/Downloads/pixel_adventure-master/pixel_adventure-master/assets/tiles/Pixel Adventure.tsx": {
+            "scaleInDock": 1
+        },
+        "Free.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 535.3333333333333,
+                "y": -18.666666666666742
+            }
+        },
+        "Game2D.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 2,
+            "scaleInEditor": 5.5
+        },
+        "Level-02.tmx": {
+            "scale": 1.4249999999999998,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 319.64912280701753,
+                "y": 184.21052631578948
+            }
+        },
+        "LevelTrongGay.tmx": {
+            "scale": 0.555625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 759.5050618672665,
+                "y": 384.251968503937
+            }
+        },
+        "Level_02.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 272,
+                "y": -23.5
+            }
+        },
+        "Level_02.tmx#Terrain_and_Props": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "Pixel Adventure.tsx": {
+            "scaleInDock": 1
+        },
+        "Sale-board.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Terrain_and_Props.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tileset.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 5.5
+        },
+        "basic.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "level_01.tmx": {
+            "expandedObjectLayers": [
+                5,
+                4
+            ],
+            "scale": 3,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 531.6666666666666,
+                "y": 312.5
+            }
+        },
+        "level_02.tmx": {
+            "expandedObjectLayers": [
+                6
+            ],
+            "scale": 1,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 641,
+                "y": 183.5
+            }
+        },
+        "level_02.tmx#Terrain_and_Props": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "level_03.tmx": {
+            "scale": 0.555625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 759.5050618672665,
+                "y": 384.2519685039369
+            }
+        },
+        "level_04.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 2422,
+                "y": 320.33333333333337
+            }
+        },
+        "level_3.tmx": {
+            "scale": 0.23564453124999998,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": -360.71280563613755,
+                "y": 148.52880232076257
+            }
+        },
+        "level_3.tmx#basic": {
+            "scaleInDock": 1
+        },
+        "map2.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "windrise-background.tsx": {
+            "scaleInDock": 1
+        }
+    },
+    "last.externalTilesetPath": "C:/Android/AndroidStudioProjects/Final_Project/assets/tiles",
+    "last.imagePath": "C:/Android/AndroidStudioProjects/Final_Project/assets/images/Tiles_images",
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+        "Decors.tsx",
+        "level_01.tmx",
+        "level_02.tmx",
+        "basic.tsx",
+        "level_04.tmx",
+        "level_03.tmx"
+    ],
+    "project": "Game2D.tiled-project",
+    "property.type": "float",
+    "recentFiles": [
+        "Decors.tsx",
+        "level_01.tmx",
+        "level_02.tmx",
+        "basic.tsx",
+        "level_03.tmx",
+        "level_04.tmx",
+        "LevelTrongGay.tmx",
+        "Game2D.tsx",
+        "Free.tmx",
+        "F:/Downloads/forest-nature-fantasy-tileset-free/Fantasy Swamp Forest/Free/Free.tmx",
+        "Sale-board.tsx",
+        "Terrain_and_Props.tsx"
+    ],
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
