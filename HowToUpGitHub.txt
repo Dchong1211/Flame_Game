@@ -1,3 +1,13 @@
 git add .
 git commit -m "Initial commit"
 git push
+
+/.
+Nếu là lần đầu
+git init
+git remote add origin https://github.com/Dchong1211/Flame_Game.git
+git add .
+git commit -m "Initial commit"
+git push origin master
+git push --set-upstream origin master
+./
