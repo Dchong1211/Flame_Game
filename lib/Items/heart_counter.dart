@@ -11,6 +11,7 @@ class HeartCounter extends PositionComponent with HasGameReference<Knight> {
 
   @override
   Future<void> onLoad() async {
+    anchor = Anchor.topLeft;
     position = Vector2(50, 20);
     heartSprite = Sprite(game.images.fromCache('Items/HeartCount.png'));
     _updateHearts();

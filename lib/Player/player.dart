@@ -13,6 +13,7 @@ import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
 
 import '../Collisions/hitbox.dart';
+import '../Traps/damaged_area.dart';
 
 enum PlayerState { idle, run, jump, fall, attack1, attack2, attack3, hit, death }
 
@@ -143,6 +144,10 @@ class Player extends SpriteAnimationGroupComponent
       if (other is Heart) other.collidedWithPlayer();
       if (other is Shuriken) hurt();
       if (other is Checkpoint) _reachedCheckpoint();
+      if (other is DamagedArea) {
+        heartCount = 0;
+        hurt();
+      }
       if (other is Enemy && !isAttacking) {
         collidedWithEnemy();
       }

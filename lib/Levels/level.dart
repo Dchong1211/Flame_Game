@@ -9,6 +9,8 @@ import 'package:final_project/Traps/shuriken.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 
+import '../Traps/damaged_area.dart';
+
 class Level extends World {
   List<CollisionBlock> collisionBlocks = [];
   final String levelName;
@@ -55,14 +57,21 @@ class Level extends World {
               position: Vector2(spawnPoint.x, spawnPoint.y),
               size: Vector2(spawnPoint.width, spawnPoint.height),
             );
-            add(shuriken);
+            level.add(shuriken);
             break;
           case 'Checkpoint':
             final checkpoint = Checkpoint(
               position: Vector2(spawnPoint.x, spawnPoint.y),
               size: Vector2(spawnPoint.width, spawnPoint.height),
             );
-            add(checkpoint);
+            level.add(checkpoint);
+            break;
+          case 'DamagedArea': // Thêm trường hợp này
+            final damagedArea = DamagedArea(
+              position: Vector2(spawnPoint.x, spawnPoint.y),
+              size: Vector2(spawnPoint.width, spawnPoint.height),
+            );
+            add(damagedArea);
             break;
           case 'Enemy':
             final offNeg = spawnPoint.properties.getValue('offNeg');

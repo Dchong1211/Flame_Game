@@ -10,6 +10,7 @@ class CoinCounter extends PositionComponent with HasGameReference<Knight> {
 
   @override
   Future<void> onLoad() async {
+    anchor = Anchor.topLeft;
     position = Vector2(50, 60);
 
     final sprite = Sprite(game.images.fromCache('Items/CoinCount.png'));

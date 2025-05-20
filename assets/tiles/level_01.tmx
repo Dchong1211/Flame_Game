@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="100" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="112">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="100" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="132">
  <tileset firstgid="1" source="Game2D.tsx"/>
  <tileset firstgid="49" source="Decors.tsx"/>
  <layer id="2" name="Tile Layer 2" width="100" height="23">
@@ -84,22 +84,26 @@
 </data>
  </layer>
  <objectgroup id="4" name="SpawnPoints" class="Player" opacity="0.9">
-  <object id="4" name="Player" type="Player" x="352" y="256" width="32" height="32"/>
+  <object id="4" name="Player" type="Player" x="256" y="256" width="32" height="32"/>
   <object id="65" name="Checkpoint" type="Checkpoint" x="1392" y="176" width="64" height="64"/>
   <object id="76" name="Coins" type="Coins" x="452" y="180" width="8" height="8"/>
+  <object id="115" name="Coins" type="Coins" x="548" y="148" width="8" height="8"/>
   <object id="89" name="Coins" type="Coins" x="724" y="260" width="8" height="8"/>
   <object id="94" name="Coins" type="Coins" x="996" y="100" width="8" height="8"/>
   <object id="85" name="Heart" type="Heart" x="292" y="116" width="8" height="8"/>
   <object id="78" name="Coins" type="Coins" x="468" y="180" width="8" height="8"/>
+  <object id="114" name="Coins" type="Coins" x="564" y="148" width="8" height="8"/>
   <object id="88" name="Coins" type="Coins" x="740" y="260" width="8" height="8"/>
   <object id="95" name="Coins" type="Coins" x="1012" y="100" width="8" height="8"/>
   <object id="79" name="Coins" type="Coins" x="484" y="180" width="8" height="8"/>
+  <object id="113" name="Coins" type="Coins" x="580" y="148" width="8" height="8"/>
   <object id="87" name="Coins" type="Coins" x="756" y="260" width="8" height="8"/>
   <object id="96" name="Coins" type="Coins" x="1028" y="100" width="8" height="8"/>
   <object id="80" name="Coins" type="Coins" x="500" y="180" width="8" height="8"/>
+  <object id="112" name="Coins" type="Coins" x="596" y="148" width="8" height="8"/>
   <object id="86" name="Coins" type="Coins" x="772" y="260" width="8" height="8"/>
   <object id="97" name="Coins" type="Coins" x="1044" y="100" width="8" height="8"/>
-  <object id="84" type="Shuriken" x="432" y="96" width="32" height="32">
+  <object id="84" name="Shuriken" type="Shuriken" x="432" y="96" width="32" height="32">
    <properties>
     <property name="isVertical" type="bool" value="false"/>
     <property name="offNeg" type="float" value="4"/>
@@ -121,9 +125,72 @@
   <object id="106" name="Coins" type="Coins" x="708" y="164" width="8" height="8"/>
   <object id="107" name="Coins" type="Coins" x="708" y="180" width="8" height="8"/>
   <object id="110" name="Heart" type="Heart" x="788" y="148" width="8" height="8"/>
-  <object id="111" name="Enemy" type="Enemy" x="272" y="256" width="32" height="32">
+  <object id="111" name="Enemy" type="Enemy" x="464" y="256" width="32" height="32">
    <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="118" name="Enemy" type="Enemy" x="656" y="272" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="2"/>
+    <property name="offPos" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="119" name="Enemy" type="Enemy" x="880" y="224" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="2"/>
+    <property name="offPos" type="float" value="3"/>
+   </properties>
+  </object>
+  <object id="120" name="Enemy" type="Enemy" x="800" y="128" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="121" name="Enemy" type="Enemy" x="1312" y="256" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="2"/>
+    <property name="offPos" type="float" value="3"/>
+   </properties>
+  </object>
+  <object id="122" name="Enemy" type="Enemy" x="1024" y="144" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="4"/>
+    <property name="offPos" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="123" name="Shuriken" type="Shuriken" x="640" y="112" width="32" height="32">
+   <properties>
+    <property name="isVertical" type="bool" value="true"/>
+    <property name="offNeg" type="float" value="4"/>
+    <property name="offPos" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="124" name="Shuriken" type="Shuriken" x="800" y="240" width="32" height="32">
+   <properties>
+    <property name="isVertical" type="bool" value="true"/>
+    <property name="offNeg" type="float" value="2"/>
+    <property name="offPos" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="125" name="Shuriken" type="Shuriken" x="1120" y="112" width="32" height="32">
+   <properties>
+    <property name="isVertical" type="bool" value="true"/>
     <property name="offNeg" type="float" value="3"/>
+    <property name="offPos" type="float" value="3"/>
+   </properties>
+  </object>
+  <object id="126" name="Coins" type="Coins" x="948" y="180" width="8" height="8"/>
+  <object id="127" name="Coins" type="Coins" x="948" y="196" width="8" height="8"/>
+  <object id="128" name="Coins" type="Coins" x="948" y="212" width="8" height="8"/>
+  <object id="129" name="Coins" type="Coins" x="948" y="228" width="8" height="8"/>
+  <object id="130" name="Coins" type="Coins" x="948" y="244" width="8" height="8"/>
+  <object id="131" name="Shuriken" type="Shuriken" x="1312" y="176" width="32" height="32">
+   <properties>
+    <property name="isVertical" type="bool" value="false"/>
+    <property name="offNeg" type="float" value="2"/>
     <property name="offPos" type="float" value="2"/>
    </properties>
   </object>
