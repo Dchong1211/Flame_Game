@@ -1,23 +1,8 @@
 import 'package:flutter/material.dart';
 import '../Main/main_menu.dart';
 
-/*
-TODO: Có thể điều chỉnh thêm trong tương lai:
-1. Thêm hiệu ứng âm thanh khi nhấn pause
-2. Thêm animation fade in/out cho menu pause
-3. Thêm tùy chọn Settings trong menu pause:
-   - Điều chỉnh âm lượng
-   - Độ nhạy của controls
-   - Độ sáng màn hình
-4. Thêm tùy chọn Save Game trong menu pause
-5. Thêm hiệu ứng blur background khi pause
-6. Thêm thông tin game (level, điểm số) trong menu pause
-7. Tối ưu hóa giao diện cho các kích thước màn hình khác nhau
-*/
-
 class PauseButton extends StatelessWidget {
-  const PauseButton({Key? key}) : super(key: key);
-
+  const PauseButton({super.key});
   @override
   Widget build(BuildContext context) {
     return Positioned(

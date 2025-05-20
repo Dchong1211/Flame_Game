@@ -58,7 +58,6 @@ class Enemy extends SpriteAnimationGroupComponent<State>
   double attackCooldown = 0;
   final double attackCooldownTime = 2.0;
 
-  // Thêm biến đếm thời gian cho animation attack
   double attackAnimationTimer = 0.0;
 
   @override
@@ -121,8 +120,6 @@ class Enemy extends SpriteAnimationGroupComponent<State>
     if (attackCooldown > 0) {
       attackCooldown -= dt;
     }
-
-    // Cập nhật thời gian animation attack
     if (isAttacking) {
       attackAnimationTimer += dt;
 

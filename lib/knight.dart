@@ -22,24 +22,26 @@ class Knight extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks,
   final attackButton = AttackButton();
   List<String> levelNames = ['level_01', 'level_02', 'level_03', 'level_04'];
   int currentLevelIndex = 0;
-  late ParallaxComponent parallaxBackground;
+
+  ParallaxComponent? parallaxBackground;
+
   bool playSounds = true;
   double soundVolume = 1.0;
 
   @override
   FutureOr<void> onLoad() async {
     await images.loadAllImages();
-    await loadLevel(); // <- chờ load xong level trước khi tiếp tục
+    await loadLevel();
     return super.onLoad();
   }
-
 
   @override
   void update(double dt) {
     heartCount = player.heartCount;
     updateJoystick();
-    if (parallaxBackground.parallax != null) {
-      parallaxBackground.parallax!.baseVelocity = Vector2(player.velocity.x * 0.3, 0);
+
+    if (parallaxBackground?.parallax != null) {
+      parallaxBackground!.parallax!.baseVelocity = Vector2(player.velocity.x * 0.3, 0);
     }
     super.update(dt);
   }
@@ -59,27 +61,6 @@ class Knight extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks,
     cam.viewport.add(joyStick);
   }
 
-  // void updateJoystick() {
-  //   if (joyStick.direction != JoystickDirection.idle) {
-  //     switch (joyStick.direction) {
-  //       case JoystickDirection.left:
-  //       case JoystickDirection.upLeft:
-  //       case JoystickDirection.downLeft:
-  //         player.horizontal = -1;
-  //         break;
-  //       case JoystickDirection.right:
-  //       case JoystickDirection.upRight:
-  //       case JoystickDirection.downRight:
-  //         player.horizontal = 1;
-  //         break;
-  //       default:
-  //         player.horizontal = 0;
-  //         break;
-  //     }
-  //   } else {
-  //
-  //   }
-  // }
   void updateJoystick() {
     switch (joyStick.direction) {
       case JoystickDirection.left:
@@ -108,10 +89,7 @@ class Knight extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks,
     await loadLevel();
   }
 
-
-
   Future<void> loadLevel() async {
-    // Load level ngay lập tức, không delay
     Level world = Level(levelName: levelNames[currentLevelIndex], collisionBlocks: []);
     await add(world);
 
@@ -125,18 +103,35 @@ class Knight extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks,
 
     add(cam);
 
-    parallaxBackground = await loadParallaxComponent([
-      ParallaxImageData('Backgrounds/Level_1/BG1.png'),
-      ParallaxImageData('Backgrounds/Level_1/BG2.png'),
-      ParallaxImageData('Backgrounds/Level_1/BG3.png'),
-    ], baseVelocity: Vector2.zero(), velocityMultiplierDelta: Vector2(1.5, 0));
+    parallaxBackground?.removeFromParent();
 
-    add(parallaxBackground);
+    Map<String, List<ParallaxImageData>?> levelBackgrounds = {
+      'level_01': [
+        ParallaxImageData('Backgrounds/Level_1/BG1.png'),
+        ParallaxImageData('Backgrounds/Level_1/BG2.png'),
+        ParallaxImageData('Backgrounds/Level_1/BG3.png'),
+      ],
+      'level_02': null,
+      'level_03': null,
+      'level_04': null,
+    };
+
+    var bgImages = levelBackgrounds[levelNames[currentLevelIndex]];
+    if (bgImages != null) {
+      parallaxBackground = await loadParallaxComponent(
+        bgImages,
+        baseVelocity: Vector2.zero(),
+        velocityMultiplierDelta: Vector2(1.5, 0),
+      );
+      add(parallaxBackground!);
+    } else {
+      parallaxBackground = null;
+    }
+
     addJoyStick();
     cam.viewport.add(jumpButton);
     cam.viewport.add(attackButton);
     cam.viewport.add(CoinCounter());
     cam.viewport.add(HeartCounter());
   }
-
 }

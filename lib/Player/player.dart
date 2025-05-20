@@ -144,7 +144,7 @@ class Player extends SpriteAnimationGroupComponent
       if (other is Shuriken) hurt();
       if (other is Checkpoint) _reachedCheckpoint();
       if (other is Enemy && !isAttacking) {
-        collidedwithEnemy();
+        collidedWithEnemy();
       }
 
     }
@@ -190,7 +190,7 @@ class Player extends SpriteAnimationGroupComponent
   }
 
   void updatePlayerMovement(double dt) {
-    if (isAttacking || gotHit) {  // thêm gotHit vào
+    if (isAttacking || gotHit) {
       velocity.x = 0;
       return;
     }
@@ -394,7 +394,6 @@ class Player extends SpriteAnimationGroupComponent
     gotHit = false;
   }
 
-
   void _reachedCheckpoint() async {
     reachedCheckpoint = true;
     current = PlayerState.idle;
@@ -405,7 +404,7 @@ class Player extends SpriteAnimationGroupComponent
     await game.loadNextLevel();
     reachedCheckpoint = false;
   }
-  void collidedwithEnemy() {
+  void collidedWithEnemy() {
     hurt();
   }
 }

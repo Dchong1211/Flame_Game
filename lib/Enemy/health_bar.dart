@@ -16,11 +16,7 @@ class HealthBar extends PositionComponent {
   void render(Canvas canvas) {
     final paintBg = BasicPalette.black.paint()..style = PaintingStyle.fill;
     final paintFg = BasicPalette.red.paint()..style = PaintingStyle.fill;
-
-    // Draw background
     canvas.drawRect(size.toRect(), paintBg);
-
-    // Draw foreground (current health)
     final healthWidth = size.x * (currentHealth / maxHealth);
     canvas.drawRect(Rect.fromLTWH(0, 0, healthWidth, size.y), paintFg);
   }

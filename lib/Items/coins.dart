@@ -53,10 +53,8 @@ class Coins extends SpriteAnimationComponent
   void collidedWithPlayer() async {
     if (!collected) {
       collected = true;
-      // Tăng số vàng
       game.coinCount += 1;
 
-      // Đổi animation khi thu thập
       animation = SpriteAnimation.fromFrameData(
         game.images.fromCache('Items/MonedaP.png'),
         SpriteAnimationData.sequenced(
