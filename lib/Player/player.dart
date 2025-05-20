@@ -73,7 +73,7 @@ class Player extends SpriteAnimationGroupComponent
     anchor = Anchor.center;
     debugMode = true;
     attackHitbox = AttackHitbox(
-      size: Vector2(44, 30),
+      size: Vector2(40, 30),
       position: Vector2(20, 10),
     )..anchor = Anchor.topLeft;
     customHitbox = RectangleHitbox(
@@ -300,13 +300,9 @@ class Player extends SpriteAnimationGroupComponent
   }
   void startAttackAnimation(int combo) {
     isAttacking = true;
-
-    // Xóa hitbox cũ nếu có
     if (attackHitbox.isMounted) {
       attackHitbox.removeFromParent();
     }
-
-    // Gán animation tấn công
     switch (combo) {
       case 1:
         current = PlayerState.attack1;
@@ -319,9 +315,7 @@ class Player extends SpriteAnimationGroupComponent
         break;
     }
 
-    // Delay 0.3s rồi mới add hitbox
     Future.delayed(Duration(milliseconds: 200), () {
-      // Kiểm tra nếu đang tấn công thì mới add hitbox
       if (isAttacking) {
         attackHitbox.position = lastDirection == 1
             ? Vector2(20, 49)
@@ -330,8 +324,6 @@ class Player extends SpriteAnimationGroupComponent
         lastDirection == 1 ? Anchor.centerLeft : Anchor.centerRight;
 
         add(attackHitbox);
-
-        // Tự remove hitbox sau 200ms
         Future.delayed(Duration(milliseconds: 200), () {
           if (attackHitbox.isMounted) {
             attackHitbox.removeFromParent();
@@ -362,7 +354,6 @@ class Player extends SpriteAnimationGroupComponent
 
     heartCount -= 1;
 
-    // Ngắt combo/tấn công ngay lập tức
     isAttacking = false;
     currentCombo = 0;
     queuedCombo = 0;

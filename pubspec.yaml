@@ -90,7 +90,7 @@ flutter:
       - assets/images/Items/CoinCount.png
       - assets/images/Traps/
       - assets/audio/coin.wav
-      - assets/images/Chicken/
+      - assets/images/Skeleton/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

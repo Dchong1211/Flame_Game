@@ -84,7 +84,7 @@
 </data>
  </layer>
  <objectgroup id="4" name="SpawnPoints" class="Player" opacity="0.9">
-  <object id="4" name="Player" type="Player" x="272" y="256" width="32" height="32"/>
+  <object id="4" name="Player" type="Player" x="352" y="256" width="32" height="32"/>
   <object id="65" name="Checkpoint" type="Checkpoint" x="1392" y="176" width="64" height="64"/>
   <object id="76" name="Coins" type="Coins" x="452" y="180" width="8" height="8"/>
   <object id="89" name="Coins" type="Coins" x="724" y="260" width="8" height="8"/>
@@ -121,7 +121,7 @@
   <object id="106" name="Coins" type="Coins" x="708" y="164" width="8" height="8"/>
   <object id="107" name="Coins" type="Coins" x="708" y="180" width="8" height="8"/>
   <object id="110" name="Heart" type="Heart" x="788" y="148" width="8" height="8"/>
-  <object id="111" name="Enemy" type="Enemy" x="672" y="288" width="16" height="16">
+  <object id="111" name="Enemy" type="Enemy" x="272" y="256" width="32" height="32">
    <properties>
     <property name="offNeg" type="float" value="3"/>
     <property name="offPos" type="float" value="2"/>
