@@ -10,7 +10,8 @@ class AttackButton extends SpriteComponent
   FutureOr<void> onLoad() {
     sprite = Sprite(game.images.fromCache('UI/AttackButton.png'));
     size = Vector2.all(96);
-    position = Vector2(900,350);
+    anchor = Anchor.bottomRight;
+    position = Vector2(game.size.x-70, game.size.y - 40);
 
     return super.onLoad();
   }
