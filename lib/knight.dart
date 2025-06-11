@@ -8,8 +8,10 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame/parallax.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'Items/coin_counter.dart';
+import 'Sound/sound_manager.dart';
 
 class Knight extends FlameGame
     with HasKeyboardHandlerComponents, DragCallbacks, HasCollisionDetection {
@@ -26,14 +28,20 @@ class Knight extends FlameGame
   ParallaxComponent? parallaxBackground;
 
   bool playSounds = true;
-  double soundVolume = 1.0;
+  double soundVolume = 0.1;
 
   late final RectangleComponent blackOverlay;
 
   @override
   FutureOr<void> onLoad() async {
     await images.loadAllImages();
+    await SoundManager().init();
+    if (!FlameAudio.bgm.isPlaying) {
+      await FlameAudio.bgm.play('background_music.ogg', volume: soundVolume);
+    }
+
     await loadLevel();
+
     blackOverlay = RectangleComponent(
       size: size,
       position: Vector2.zero(),
@@ -44,6 +52,7 @@ class Knight extends FlameGame
 
     return super.onLoad();
   }
+
 
   @override
   void update(double dt) {
@@ -109,7 +118,6 @@ class Knight extends FlameGame
 
     player = world.player!;
     player.collisionBlocks = world.collisionBlocks;
-
     cam = CameraComponent(world: world);
     cam.viewfinder.anchor = Anchor.center;
     cam.follow(player);
@@ -188,7 +196,5 @@ class Knight extends FlameGame
         ),
       )
     );
-
   }
-
 }

@@ -4,6 +4,8 @@ import 'package:final_project/Collisions/hitbox.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
+import '../Sound/sound_manager.dart';
+
 class Coins extends SpriteAnimationComponent
     with HasGameReference<Knight>, CollisionCallbacks {
   final String coin;
@@ -51,6 +53,7 @@ class Coins extends SpriteAnimationComponent
   void collidedWithPlayer() async {
     if (!collected) {
       collected = true;
+      SoundManager().playCoin();
       game.coinCount += 1;
 
       animation = SpriteAnimation.fromFrameData(

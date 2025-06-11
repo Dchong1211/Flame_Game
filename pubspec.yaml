@@ -67,35 +67,47 @@ flutter:
       - assets/images/
       - assets/images/Items/
       - assets/images/UI/
-      - assets/tiles/level_01.tmx
-      - assets/tiles/level_02.tmx
-      - assets/tiles/level_03.tmx
+
       - assets/images/Tiles_images/
       - assets/images/Tiles_images/Tileset.png
       - assets/images/Tiles_images/basic.png
       - assets/images/Tiles_images/Assets.png
-      - assets/images/Character/
+
       - assets/images/Backgrounds/
       - assets/images/Backgrounds/Level_1/
+      - assets/images/Items/Heart.png
+      - assets/images/Items/CoinCount.png
+      - assets/images/Traps/
+      - assets/images/Skeleton/
+      - assets/images/Tiles_images/Dungeon Tile Set.png
+      - assets/images/Traps/Bridge.png
+
+      - assets/images/Character/
+      - assets/images/Character/_Attack1.png
+      - assets/images/Character/_Attack2.png
+      - assets/images/Character/_Attack3.png
+
       - assets/tiles/Game2D.tsx
       - assets/tiles/Decors.tsx
       - assets/tiles/basic.tsx
       - assets/tiles/Assets.tsx
       - assets/tiles/Tileset.tsx
-      - assets/tiles/ExampleTiles.tsx
-      - assets/images/Tiles_images/ExampleTiles.png
-      - assets/images/Character/_Attack1.png
-      - assets/images/Character/_Attack2.png
-      - assets/images/Character/_Attack3.png
-      - assets/images/Items/Heart.png
-      - assets/images/Items/CoinCount.png
-      - assets/images/Traps/
-      - assets/audio/coin.wav
-      - assets/images/Skeleton/
-      - assets/images/Tiles_images/Dungeon Tile Set.png
       - assets/tiles/DungeonTileSet.tsx
+      - assets/tiles/ExampleTiles.tsx
+      - assets/tiles/level_01.tmx
+      - assets/tiles/level_02.tmx
+      - assets/tiles/level_03.tmx
       - assets/tiles/level_04.tmx
-      - assets/images/Traps/Bridge.png
+      - assets/images/Tiles_images/ExampleTiles.png
+
+      - assets/audio/background_music.ogg
+      - assets/audio/coin.wav
+      - assets/audio/attack.wav
+      - assets/audio/jump.wav
+      - assets/audio/hit.wav
+      - assets/audio/death.wav
+      - assets/audio/heart.wav
+      - assets/audio/checkpoint.wav
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

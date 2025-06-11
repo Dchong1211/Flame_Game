@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:final_project/Player/player.dart';
+import 'package:final_project/Sound/sound_manager.dart';
 import 'package:final_project/knight.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
@@ -41,6 +42,7 @@ class Checkpoint extends SpriteAnimationComponent
   }
 
   void _reachedCheckpoint() async {
+    SoundManager().playCheckpoint();
     animation = SpriteAnimation.fromFrameData(
       game.images.fromCache(
           'Items/Checkpoint (Flag Out) (64x64).png'),

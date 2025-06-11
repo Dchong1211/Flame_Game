@@ -5,6 +5,7 @@ import 'package:final_project/Items/coins.dart';
 import 'package:final_project/Items/heart.dart';
 import 'package:final_project/Button/attack_hitbox.dart';
 import 'package:final_project/Items/wizard.dart';
+import 'package:final_project/Sound/sound_manager.dart';
 import 'package:final_project/Traps/shuriken.dart';
 import 'package:final_project/knight.dart';
 import 'package:final_project/Collisions/check_collisions.dart';
@@ -192,7 +193,6 @@ class Player extends SpriteAnimationGroupComponent
 
     velocity.x = horizontal * speed;
     position.x += velocity.x * dt;
-
     if (horizontal < 0 && lastDirection != -1) {
       scale.x = -0.5;
       lastDirection = -1;
@@ -282,6 +282,7 @@ class Player extends SpriteAnimationGroupComponent
     if (!canControl) return;
 
     if (jumpCount < maxJumps) {
+      SoundManager().playJump();
       velocity.y = -jumpForce;
       isOnGround = false;
       jumpCount++;
@@ -303,10 +304,15 @@ class Player extends SpriteAnimationGroupComponent
   }
 
   void startAttackAnimation(int combo) {
+    if (current == PlayerState.death) return;
+
     isAttacking = true;
+    SoundManager().playAttack();
+
     if (attackHitbox.isMounted) {
       attackHitbox.removeFromParent();
     }
+
     switch (combo) {
       case 1:
         current = PlayerState.attack1;
@@ -320,14 +326,14 @@ class Player extends SpriteAnimationGroupComponent
     }
 
     Future.delayed(Duration(milliseconds: 200), () {
-      if (isAttacking) {
+      if (isAttacking && current != PlayerState.death) {
         attackHitbox.position = lastDirection == 1
             ? Vector2(20, 49)
             : Vector2(64, 49);
-        attackHitbox.anchor =
-        lastDirection == 1 ? Anchor.centerLeft : Anchor.centerRight;
+        attackHitbox.anchor = lastDirection == 1 ? Anchor.centerLeft : Anchor.centerRight;
 
         add(attackHitbox);
+
         Future.delayed(Duration(milliseconds: 200), () {
           if (attackHitbox.isMounted) {
             attackHitbox.removeFromParent();
@@ -337,6 +343,8 @@ class Player extends SpriteAnimationGroupComponent
     });
 
     animationTicker?.onComplete = () {
+      if (current == PlayerState.death) return;
+
       if (queuedCombo > 0 && currentCombo < 3) {
         queuedCombo--;
         currentCombo++;
@@ -347,32 +355,40 @@ class Player extends SpriteAnimationGroupComponent
     };
   }
 
+
   void resetCombo() {
     isAttacking = false;
     currentCombo = 0;
     queuedCombo = 0;
     animationTicker?.onComplete = null;
   }
-  void hurt(){
+
+  void hurt() {
     if (gotHit) return;
-
     heartCount -= 1;
-
     isAttacking = false;
     currentCombo = 0;
     queuedCombo = 0;
+
     animationTicker?.onComplete = null;
 
     gotHit = true;
     invincibleTimer = invincibleDuration;
 
-    if(heartCount > 0){
+    if (heartCount > 0) {
+      SoundManager().playHit();
       current = PlayerState.hit;
     } else {
+      current = PlayerState.death;
+      SoundManager().playDeath();
+
+      if (attackHitbox.isMounted) {
+        attackHitbox.removeFromParent();
+      }
+
       respawn();
     }
   }
-
 
   void respawn() async {
     const canMoveDuration = Duration(milliseconds: 400);
@@ -387,6 +403,7 @@ class Player extends SpriteAnimationGroupComponent
     heartCount = 3;
 
     current = PlayerState.death;
+    SoundManager().playDeath();
     await animationTicker?.completed;
     animationTicker?.reset();
 

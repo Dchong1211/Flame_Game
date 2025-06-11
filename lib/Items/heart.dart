@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:final_project/Player/player.dart';
+import 'package:final_project/Sound/sound_manager.dart';
 import 'package:final_project/knight.dart';
 import 'package:final_project/Collisions/hitbox.dart';
 import 'package:flame/collisions.dart';
@@ -52,6 +53,7 @@ class Heart extends SpriteAnimationComponent
   void collidedWithPlayer() async {
     if (!collected && game.player.heartCount < 3) {
       collected = true;
+      SoundManager().playHeart();
       game.player.heartCount += 1;
       animation = SpriteAnimation.fromFrameData(
         game.images.fromCache('Items/MonedaP.png'),
