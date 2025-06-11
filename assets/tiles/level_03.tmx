@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="95" height="48" tilewidth="16" tileheight="16" infinite="0" nextlayerid="16" nextobjectid="224">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="95" height="48" tilewidth="16" tileheight="16" infinite="0" nextlayerid="16" nextobjectid="255">
  <tileset firstgid="1" source="Assets.tsx"/>
  <tileset firstgid="193" source="Tileset.tsx"/>
  <tileset firstgid="241" source="ExampleTiles.tsx"/>
@@ -256,6 +256,116 @@
   <object id="220" name="DamagedArea" type="DamagedArea" x="848" y="688" width="560" height="64"/>
   <object id="221" name="DamagedArea" type="DamagedArea" x="1184" y="240" width="256" height="16"/>
   <object id="223" name="DamagedArea" type="DamagedArea" x="896" y="240" width="240" height="16"/>
+  <object id="225" name="Enemy" type="Enemy" x="400" y="656" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="227" name="Enemy" type="Enemy" x="304" y="656" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="228" name="Enemy" type="Enemy" x="576" y="544" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="231" name="Enemy" type="Enemy" x="672" y="128" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="232" name="Enemy" type="Enemy" x="800" y="176" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="233" name="Enemy" type="Enemy" x="848" y="176" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="234" name="Enemy" type="Enemy" x="1008" y="160" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="235" name="Enemy" type="Enemy" x="1152" y="128" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="236" name="Enemy" type="Enemy" x="1296" y="160" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="237" name="Enemy" type="Enemy" x="1280" y="640" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="238" name="Enemy" type="Enemy" x="1120" y="640" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="239" name="Enemy" type="Enemy" x="960" y="640" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="240" name="Enemy" type="Enemy" x="743" y="655.333" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="242" name="Enemy" type="Enemy" x="448" y="208" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="243" name="Enemy" type="Enemy" x="496" y="208" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="244" name="Enemy" type="Enemy" x="320" y="208" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="245" name="Enemy" type="Enemy" x="272" y="208" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="246" name="Coins" type="Coins" x="395.792" y="179.167" width="8" height="8"/>
+  <object id="247" name="Coins" type="Coins" x="939.542" y="155.292" width="8" height="8"/>
+  <object id="248" name="Coins" type="Coins" x="1079.5" y="144" width="8" height="8"/>
+  <object id="249" name="Coins" type="Coins" x="1239.5" y="135" width="8" height="8"/>
+  <object id="250" name="Coins" type="Coins" x="1367.5" y="144" width="8" height="8"/>
+  <object id="252" name="Coins" type="Coins" x="1047.25" y="625" width="8" height="8"/>
+  <object id="253" name="Coins" type="Coins" x="1211.25" y="625" width="8" height="8"/>
+  <object id="254" name="Coins" type="Coins" x="675.656" y="499.875" width="8" height="8"/>
  </objectgroup>
  <objectgroup id="9" name="Collisions">
   <object id="57" x="0" y="624" width="112" height="144"/>
@@ -313,7 +423,6 @@
   <object id="140" x="448" y="240" width="96" height="272"/>
   <object id="141" x="480" y="512" width="64" height="16"/>
   <object id="144" type="Platform" x="560" y="576" width="64" height="16"/>
-  <object id="145" x="596.5" y="438" height="0.5"/>
   <object id="146" type="Platform" x="656" y="160" width="64" height="16"/>
   <object id="154" type="Platform" x="608" y="640" width="16" height="16"/>
   <object id="155" x="608" y="768" width="96" height="16"/>

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:final_project/Enemy/enemy_attack_hitbox.dart';
 import 'package:final_project/Enemy/health_bar.dart';
-import 'package:final_project/Player/attack_hitbox.dart';
+import 'package:final_project/Button/attack_hitbox.dart';
 import 'package:final_project/Player/player.dart';
 import 'package:final_project/knight.dart';
 import 'package:flame/collisions.dart';

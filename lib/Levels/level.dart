@@ -4,11 +4,12 @@ import 'package:final_project/Items/checkpoint.dart';
 import 'package:final_project/Items/coins.dart';
 import 'package:final_project/Collisions/collisions.dart';
 import 'package:final_project/Items/heart.dart';
+import 'package:final_project/Items/wizard.dart';
 import 'package:final_project/Player/player.dart';
 import 'package:final_project/Traps/shuriken.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
-
+import '../Traps/bridge.dart';
 import '../Traps/damaged_area.dart';
 
 class Level extends World {
@@ -66,6 +67,13 @@ class Level extends World {
             );
             level.add(checkpoint);
             break;
+          case 'Wizard':
+            final wizard = Wizard(
+              position: Vector2(spawnPoint.x, spawnPoint.y),
+              size: Vector2(spawnPoint.width, spawnPoint.height),
+            );
+            level.add(wizard);
+            break;
           case 'DamagedArea': // Thêm trường hợp này
             final damagedArea = DamagedArea(
               position: Vector2(spawnPoint.x, spawnPoint.y),
@@ -84,6 +92,13 @@ class Level extends World {
               size: Vector2(spawnPoint.width, spawnPoint.height),
             );
             add(enemy);
+            break;
+          case 'Bridge':
+            final bridge = Bridge(
+              position: Vector2(spawnPoint.x, spawnPoint.y),
+              size: Vector2(spawnPoint.width, spawnPoint.height),
+            );
+            add(bridge);
             break;
           default:
         }

@@ -1,7 +1,6 @@
 import 'package:flame/components.dart';
 import 'package:flame/palette.dart';
 import 'package:flutter/cupertino.dart';
-
 import '../knight.dart';
 
 class CoinCounter extends PositionComponent with HasGameReference<Knight> {

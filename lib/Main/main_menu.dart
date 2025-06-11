@@ -1,11 +1,11 @@
-import 'package:final_project/Player/pause_button.dart';
+import 'package:final_project/Button/pause_button.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../knight.dart';
 
 class MainMenu extends StatelessWidget {
-  const MainMenu({Key? key}) : super(key: key);
+  const MainMenu({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,6 @@ class MainMenu extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Game Title
               Text(
                 'Knight Adventure',
                 style: TextStyle(

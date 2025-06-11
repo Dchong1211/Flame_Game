@@ -4,7 +4,6 @@ import 'package:final_project/knight.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
-
 class Checkpoint extends SpriteAnimationComponent
     with HasGameReference<Knight>, CollisionCallbacks {
   Checkpoint({
@@ -12,11 +11,10 @@ class Checkpoint extends SpriteAnimationComponent
     super.size,
   });
 
-
   @override
   FutureOr<void> onLoad() async{
     await super.onLoad();
-    debugMode = true;
+    //debugMode = true;
     add(RectangleHitbox(
       position: Vector2(18, 56),
       size: Vector2(12, 8),

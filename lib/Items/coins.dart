@@ -1,10 +1,8 @@
 import 'dart:async';
-
 import 'package:final_project/knight.dart';
 import 'package:final_project/Collisions/hitbox.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:flame_audio/flame_audio.dart';
 
 class Coins extends SpriteAnimationComponent
     with HasGameReference<Knight>, CollisionCallbacks {

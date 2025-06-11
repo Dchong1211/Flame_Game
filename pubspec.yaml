@@ -38,6 +38,7 @@ dependencies:
   flame_tiled: ^3.0.2
   duration: ^4.0.3
   flame_audio: ^2.11.5
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:
@@ -91,6 +92,10 @@ flutter:
       - assets/images/Traps/
       - assets/audio/coin.wav
       - assets/images/Skeleton/
+      - assets/images/Tiles_images/Dungeon Tile Set.png
+      - assets/tiles/DungeonTileSet.tsx
+      - assets/tiles/level_04.tmx
+      - assets/images/Traps/Bridge.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

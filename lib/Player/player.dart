@@ -3,7 +3,8 @@ import 'package:final_project/Enemy/enemy.dart';
 import 'package:final_project/Items/checkpoint.dart';
 import 'package:final_project/Items/coins.dart';
 import 'package:final_project/Items/heart.dart';
-import 'package:final_project/Player/attack_hitbox.dart';
+import 'package:final_project/Button/attack_hitbox.dart';
+import 'package:final_project/Items/wizard.dart';
 import 'package:final_project/Traps/shuriken.dart';
 import 'package:final_project/knight.dart';
 import 'package:final_project/Collisions/check_collisions.dart';
@@ -11,14 +12,15 @@ import 'package:final_project/Collisions/collisions.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
-
 import '../Collisions/hitbox.dart';
 import '../Traps/damaged_area.dart';
 
 enum PlayerState { idle, run, jump, fall, attack1, attack2, attack3, hit, death }
 
+typedef RespawnCallback = void Function();
+
 class Player extends SpriteAnimationGroupComponent
-    with HasGameReference<Knight>, KeyboardHandler, CollisionCallbacks {
+    with HasGameReference<Knight>, CollisionCallbacks {
   Player({required Vector2 position}) : super(position: position);
   late AttackHitbox attackHitbox;
 
@@ -44,6 +46,7 @@ class Player extends SpriteAnimationGroupComponent
   bool isOnGround = false;
   bool hasJumped = false;
   bool reachedCheckpoint = false;
+  bool reachedWizard = false;
   int jumpCount = 0;
   final int maxJumps = 2;
   int lastDirection = 1;
@@ -61,10 +64,12 @@ class Player extends SpriteAnimationGroupComponent
   int currentCombo = 0;
   int queuedCombo = 0;
   bool isAttacking = false;
+  bool canControl = true;
 
   final double invincibleDuration = 1;
   double invincibleTimer = 0.0;
 
+  final Set<RespawnCallback> respawnEvent = {};
 
   @override
   Future<void> onLoad() async {
@@ -72,7 +77,7 @@ class Player extends SpriteAnimationGroupComponent
     loadAllAnimation();
     startingPosition = Vector2(position.x, position.y);
     anchor = Anchor.center;
-    debugMode = true;
+    //debugMode = true;
     attackHitbox = AttackHitbox(
       size: Vector2(40, 30),
       position: Vector2(20, 10),
@@ -85,27 +90,6 @@ class Player extends SpriteAnimationGroupComponent
     add(customHitbox);
 
     scale = Vector2.all(0.5);
-  }
-
-  @override
-  bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
-    if (keysPressed.contains(LogicalKeyboardKey.keyA)) {
-      horizontal = -1;
-    }
-
-    if (keysPressed.contains(LogicalKeyboardKey.keyD)) {
-      horizontal = 1;
-    }
-    if (event is KeyDownEvent) {
-      if (event.logicalKey == LogicalKeyboardKey.keyJ) {
-        attack();
-      }
-      if (event.logicalKey == LogicalKeyboardKey.space) {
-        jump();
-      }
-    }
-
-    return super.onKeyEvent(event, keysPressed);
   }
 
   @override
@@ -144,6 +128,7 @@ class Player extends SpriteAnimationGroupComponent
       if (other is Heart) other.collidedWithPlayer();
       if (other is Shuriken) hurt();
       if (other is Checkpoint) _reachedCheckpoint();
+      if (other is Wizard) _reachedWizard(other);
       if (other is DamagedArea) {
         heartCount = 0;
         hurt();
@@ -195,10 +180,16 @@ class Player extends SpriteAnimationGroupComponent
   }
 
   void updatePlayerMovement(double dt) {
-    if (isAttacking || gotHit) {
+    if (!canControl || gotHit) {
       velocity.x = 0;
       return;
     }
+
+    if (isAttacking && isOnGround) {
+      velocity.x = 0;
+      return;
+    }
+
     velocity.x = horizontal * speed;
     position.x += velocity.x * dt;
 
@@ -211,8 +202,9 @@ class Player extends SpriteAnimationGroupComponent
     }
   }
 
+
   void updatePlayerState() {
-    if (isAttacking || gotHit) return;
+    if (!canControl || isAttacking || gotHit) return;
 
     PlayerState playerState = PlayerState.idle;
 
@@ -226,6 +218,7 @@ class Player extends SpriteAnimationGroupComponent
 
     current = playerState;
   }
+
 
   void checkHorizontalCollisions() {
     final playerRect = customHitbox.toAbsoluteRect();
@@ -286,6 +279,8 @@ class Player extends SpriteAnimationGroupComponent
   }
 
   void jump() {
+    if (!canControl) return;
+
     if (jumpCount < maxJumps) {
       velocity.y = -jumpForce;
       isOnGround = false;
@@ -293,8 +288,11 @@ class Player extends SpriteAnimationGroupComponent
     }
   }
 
+
   void attack() {
-    if (!isAttacking && current != PlayerState.jump) {
+    if (!canControl) return;
+
+    if (!isAttacking) {
       currentCombo = 1;
       startAttackAnimation(currentCombo);
     } else {
@@ -303,6 +301,7 @@ class Player extends SpriteAnimationGroupComponent
       }
     }
   }
+
   void startAttackAnimation(int combo) {
     isAttacking = true;
     if (attackHitbox.isMounted) {
@@ -395,6 +394,10 @@ class Player extends SpriteAnimationGroupComponent
     position = startingPosition - Vector2(0,32);
     current = PlayerState.idle;
 
+    for (final callback in respawnEvent) {
+      callback();
+    }
+
     await Future.delayed(canMoveDuration);
     gotHit = false;
   }
@@ -408,6 +411,19 @@ class Player extends SpriteAnimationGroupComponent
     await Future.delayed(const Duration(seconds: 2));
     await game.loadNextLevel();
     reachedCheckpoint = false;
+  }
+  void _reachedWizard(Wizard wizard) async {
+    if (reachedWizard) return;
+    reachedWizard = true;
+    canControl = false;
+    current = PlayerState.idle;
+    isAttacking = false;
+    horizontal = 0;
+    velocity = Vector2.zero();
+    await Future.delayed(const Duration(seconds: 2));
+    await (findGame() as Knight).fadeToBlack();
+    await Future.delayed(const Duration(seconds: 1));
+    await (findGame() as Knight).goToThanksScene();
   }
   void collidedWithEnemy() {
     hurt();

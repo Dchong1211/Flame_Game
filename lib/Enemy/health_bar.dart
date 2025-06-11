@@ -20,11 +20,8 @@ class HealthBar extends PositionComponent {
     final healthWidth = size.x * (currentHealth / maxHealth);
     canvas.drawRect(Rect.fromLTWH(0, 0, healthWidth, size.y), paintFg);
   }
-
   void updateHealth(int health) {
     currentHealth = health;
 
   }
-
-
 }

@@ -1,18 +1,18 @@
 import 'dart:async';
 import 'package:final_project/Items/heart_counter.dart';
-import 'package:final_project/Player/attack_button.dart';
-import 'package:final_project/Player/jump_button.dart';
+import 'package:final_project/Button/attack_button.dart';
+import 'package:final_project/Button/jump_button.dart';
 import 'package:final_project/Player/player.dart';
 import 'package:final_project/levels/level.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame/parallax.dart';
-import 'package:flutter/cupertino.dart';
-
+import 'package:flutter/material.dart';
 import 'Items/coin_counter.dart';
 
-class Knight extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks, HasCollisionDetection {
+class Knight extends FlameGame
+    with HasKeyboardHandlerComponents, DragCallbacks, HasCollisionDetection {
   late CameraComponent cam;
   late JoystickComponent joyStick;
   late Player player;
@@ -28,10 +28,20 @@ class Knight extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks,
   bool playSounds = true;
   double soundVolume = 1.0;
 
+  late final RectangleComponent blackOverlay;
+
   @override
   FutureOr<void> onLoad() async {
     await images.loadAllImages();
     await loadLevel();
+    blackOverlay = RectangleComponent(
+      size: size,
+      position: Vector2.zero(),
+      paint: Paint()..color = Colors.black.withAlpha(0),
+      priority: 999,
+    );
+    add(blackOverlay);
+
     return super.onLoad();
   }
 
@@ -41,7 +51,8 @@ class Knight extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks,
     updateJoystick();
 
     if (parallaxBackground?.parallax != null) {
-      parallaxBackground!.parallax!.baseVelocity = Vector2(player.velocity.x * 0.3, 0);
+      parallaxBackground!.parallax!.baseVelocity =
+          Vector2(player.velocity.x * 0.3, 0);
     }
     super.update(dt);
   }
@@ -90,7 +101,10 @@ class Knight extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks,
   }
 
   Future<void> loadLevel() async {
-    Level world = Level(levelName: levelNames[currentLevelIndex], collisionBlocks: []);
+    Level world = Level(
+      levelName: levelNames[currentLevelIndex],
+      collisionBlocks: [],
+    );
     await add(world);
 
     player = world.player!;
@@ -100,7 +114,6 @@ class Knight extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks,
     cam.viewfinder.anchor = Anchor.center;
     cam.follow(player);
     cam.viewfinder.zoom = 5.0;
-
     add(cam);
 
     parallaxBackground?.removeFromParent();
@@ -134,4 +147,48 @@ class Knight extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks,
     cam.viewport.add(CoinCounter());
     cam.viewport.add(HeartCounter());
   }
+
+  Future<void> fadeToBlack() async {
+
+    final overlay = RectangleComponent(
+      position: Vector2.zero(),
+      size: size.clone(),
+      paint: Paint()..color = Colors.black.withAlpha(0),
+      priority: 1000,
+    );
+
+    cam.viewport.add(overlay);
+
+    double elapsed = 0;
+    const fadeDuration = 2.0;
+
+    while (elapsed < fadeDuration) {
+      await Future.delayed(const Duration(milliseconds: 16));
+      elapsed += 0.016;
+      double opacity = (elapsed / fadeDuration).clamp(0.0, 1.0);
+      overlay.paint.color = const Color(0xFF000000).withAlpha((opacity * 255).toInt());
+    }
+
+    overlay.paint.color = const Color(0xFF000000).withAlpha(255);
+  }
+  Future<void> goToThanksScene() async {
+    removeAll(children.toList());
+
+    add(
+      TextComponent(
+        text: 'Các thành viên tham gia\n'
+            'Võ Đình Trọng\n'
+            'Hàng Minh Châu\n'
+            'Nguyễn Minh Hùng\n'
+            'Nguyễn Trọng Thời',
+        position: size / 2,
+        anchor: Anchor.center,
+        textRenderer: TextPaint(
+          style: TextStyle(fontSize: 32, color: Colors.white)
+        ),
+      )
+    );
+
+  }
+
 }

@@ -6,9 +6,7 @@ class HeartCounter extends PositionComponent with HasGameReference<Knight> {
   final List<SpriteComponent> hearts = [];
   late Sprite heartSprite;
   Player? player;
-
   int _lastHeartCount = -1;
-
   @override
   Future<void> onLoad() async {
     anchor = Anchor.topLeft;

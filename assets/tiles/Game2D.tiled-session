@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "level_01.tmx",
+    "activeFile": "level_04.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -66,6 +66,9 @@
             "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "DungeonTileSet.tsx": {
+            "scaleInDock": 2
         },
         "ExampleTiles.tsx": {
             "scaleInDock": 1
@@ -197,8 +200,8 @@
             "scale": 0.5,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 732,
-                "y": -219
+                "x": 801,
+                "y": 183
             }
         },
         "level_02.tmx": {
@@ -206,7 +209,7 @@
                 6
             ],
             "scale": 1,
-            "selectedLayer": 4,
+            "selectedLayer": 3,
             "viewCenter": {
                 "x": 640.5,
                 "y": 183.5
@@ -221,16 +224,19 @@
             "scale": 0.555625,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 601.1248593925759,
+                "x": 525.5343082114734,
                 "y": 384.251968503937
             }
         },
         "level_04.tmx": {
-            "scale": 1.5,
-            "selectedLayer": 0,
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 4,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 2421.6666666666665,
-                "y": 320.33333333333337
+                "x": 960.625,
+                "y": 560.125
             }
         },
         "level_3.tmx": {
@@ -268,11 +274,11 @@
     "property.type": "float",
     "recentFiles": [
         "Decors.tsx",
+        "level_01.tmx",
+        "level_02.tmx",
+        "basic.tsx",
         "level_03.tmx",
         "level_04.tmx",
-        "basic.tsx",
-        "level_02.tmx",
-        "level_01.tmx",
         "LevelTrongGay.tmx",
         "Game2D.tsx",
         "Free.tmx",
