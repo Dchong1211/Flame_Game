@@ -75,6 +75,7 @@ flutter:
 
       - assets/images/Backgrounds/
       - assets/images/Backgrounds/Level_1/
+      - assets/images/Backgrounds/Level_2/
       - assets/images/Items/Heart.png
       - assets/images/Items/CoinCount.png
       - assets/images/Traps/

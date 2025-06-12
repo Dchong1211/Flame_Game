@@ -83,7 +83,6 @@ class PauseButton extends StatelessWidget {
                 ),
               ),
             );
-
           },
           child: Container(
             width: 45,

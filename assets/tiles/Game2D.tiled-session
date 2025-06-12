@@ -194,8 +194,8 @@
         },
         "level_01.tmx": {
             "expandedObjectLayers": [
-                5,
-                4
+                4,
+                5
             ],
             "scale": 0.5,
             "selectedLayer": 3,

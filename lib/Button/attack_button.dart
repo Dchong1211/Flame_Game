@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:final_project/knight.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';

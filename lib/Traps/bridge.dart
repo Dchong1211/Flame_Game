@@ -10,9 +10,8 @@ class Bridge extends SpriteComponent with HasGameReference<Knight>, CollisionCal
   double timer = 0;
   final double disappearTime = 1.5;
   bool isDisappearing = false;
-  late final RectangleHitbox hitbox; // Hitbox để phát hiện người chơi đứng trên cầu
+  late final RectangleHitbox hitbox;
   final Vector2 startPosition;
-  Timer? disappearTimer;
 
   bool _isActive = true;
 

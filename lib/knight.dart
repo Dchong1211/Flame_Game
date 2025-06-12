@@ -28,7 +28,7 @@ class Knight extends FlameGame
   ParallaxComponent? parallaxBackground;
 
   bool playSounds = true;
-  double soundVolume = 0.1;
+  double soundVolume = 0.2;
 
   late final RectangleComponent blackOverlay;
 
@@ -132,7 +132,11 @@ class Knight extends FlameGame
         ParallaxImageData('Backgrounds/Level_1/BG2.png'),
         ParallaxImageData('Backgrounds/Level_1/BG3.png'),
       ],
-      'level_02': null,
+      'level_02': [
+        ParallaxImageData('Backgrounds/Level_2/BG3.png'),
+        ParallaxImageData('Backgrounds/Level_2/BG2.png'),
+        ParallaxImageData('Backgrounds/Level_2/BG1.png'),
+      ],
       'level_03': null,
       'level_04': null,
     };
